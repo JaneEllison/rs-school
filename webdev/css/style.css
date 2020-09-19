@@ -32,9 +32,9 @@ body{
 }
 
 .nav-link:hover{
-  font-weight: 500;
   color: rgb(255, 255, 255);
   text-decoration: underline;
+  text-shadow: 0 0 .8px #fff, 0 0 .8px #fff;
 }
 
 .header-logo{
@@ -91,7 +91,7 @@ body{
   max-width: 504px;
   text-align: center;
   font-size: 18px;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 140%;
   margin: 20px 2px 30px 0;
 }
@@ -108,13 +108,17 @@ body{
   border: none;
 }
 .button-start:hover{
-  background-color: RGBA(0, 0, 0, 0.7);
+  background-color:  #009CC2;;
   cursor: pointer;
 }
 
-.socials-links{
-  margin-right: 30px;
+.socials {
+  width: 170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
+
 .socials-img:hover{
   transform: scale(1.5);
 }
@@ -127,7 +131,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 120px 0 140px 0;
+  padding: 115px 0 140px 0;
 }
 
 .content-rappresent{
@@ -143,7 +147,8 @@ body{
 }
 
 .content-header{
-  font-weight: bold;
+  margin: 0;
+  font-weight: 700;
   font-size: 24px;
   line-height: 28px;
   letter-spacing: 1px;
@@ -152,7 +157,7 @@ body{
 }
 
 .content-text{
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 140%;
   color: #4E4E4E;
@@ -163,15 +168,15 @@ body{
   overflow: hidden;
   background-color: #F5F6F7;
   display: flex;
-  justify-content: right;
-  align-items: center;
-  padding: 80px 0 140px;
+  justify-content: start;
+  padding-left: 269px;
 }
 
 .content-community{
-  margin-left: 269px;
+  margin-top: 155px;
+  margin-bottom: 174px;
   margin-right: 139px;
-  width: 298px;
+  min-width: 298px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -198,27 +203,43 @@ body{
   font-size: 14px;
   line-height: 140%;
   color: #4E4E4E;
+  text-align: center;
 }
 
 .slider-community-block {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 82px;
+  margin-bottom: 140px;
 }
 
 .navigation-slider {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
+  margin-right: 150px;
 }
 
 .count-slider {
-  margin: 0 9.69px;
+  font-size: 18px;
+  margin: 0 14px;
+  display: flex;
+  align-items: center;
+}
+
+.slash{
+  margin: 0 4px;
 }
 
 .left-arrow-nav, .right-arrow-nav {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 14px;
+}
+
+.left-arrow-nav:hover, .right-arrow-nav:hover {
+  opacity: 0.5;
 }
 
 .slider-community {
