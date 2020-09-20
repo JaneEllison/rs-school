@@ -274,3 +274,52 @@ body{
   flex-direction: column;
 }
 
+.sign-up {
+  padding: 203px 0 220px 0;
+  display: flex;
+  justify-content: center;
+  background: url(../assets/bg-image-section.jpg);
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
+}
+
+.content-sign-up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up-header {
+  color: #fff;
+}
+
+.form-sign-up {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.emai{
+  width: 340px;
+  height: 46px;
+  padding: 13px 0 13px 24px;
+  border: none;
+}
+
+.email::placeholder{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 140%;
+  color: #373737;
+  opacity: 0.5;
+}
+
+.sign-up-button {
+  width: 66px;
+  height: 46px;
+  background: #00AFDB;
+  border: none;
+}
