@@ -81,7 +81,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 136px 0 89px 0;
+  padding: 136px 0 88px 0;
 }
 
 .your-life-header{
@@ -113,7 +113,10 @@ body{
 
 .button-start{
   width: 184px;
-  padding: 15px 47px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 14px;
   line-height: 16px;
@@ -268,7 +271,7 @@ body{
 }
 
 .implement {
-  padding: 117px 378px 140px 268px;
+  padding: 118px 378px 140px 268px;
 }
 
 .content-implement {
@@ -277,6 +280,11 @@ body{
   display: flex;
   flex-direction: column;
 }
+
+.learn-button {
+  width: 180px;
+}
+
 
 .sign-up {
   padding: 200px 0 220px 0;
@@ -322,6 +330,10 @@ input[type="email"]::placeholder{
 }
 
 .sign-up-button {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 66px;
   height: 46px;
   background: #00AFDB;
