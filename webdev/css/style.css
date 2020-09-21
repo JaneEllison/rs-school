@@ -46,9 +46,13 @@ body{
   font-weight: normal;
 }
 
-.nav-link:hover{
+.nav-link-about {
   color: rgb(255, 255, 255);
   text-decoration: underline;
+  text-shadow: 0 0 .8px #fff, 0 0 .8px #fff;
+}
+
+.nav-link:hover{
   text-shadow: 0 0 .8px #fff, 0 0 .8px #fff;
 }
 
