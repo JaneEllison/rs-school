@@ -328,3 +328,131 @@ input[type="email"]::placeholder{
   border: none;
 }
 
+.sign-up-button:hover {
+  background: #009CC2;
+}
+
+.emai:invalid:not(:placeholder-shown) {
+  border:2px solid red
+}
+
+.emai:valid:not(:placeholder-shown) {
+  border:2px solid green;
+}
+
+input:invalid:not(:placeholder-shown) {
+  display: block;
+}
+
+.download {
+  padding: 119px 560px 180px 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-text{
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+}
+
+.button-download {
+  width: 186px;
+  height: 46px;
+  display: flex;
+  padding: 0;
+  border: none;
+}
+
+.button-download:first-child{
+  margin-right: 30px;
+}
+
+.button-text{
+  width: 127px;
+  height: 46px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #00AFDB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-text:hover{
+  background: #009CC2;
+}
+
+.button-icon {
+  padding: 13px 21px;
+  width: 59px;
+  height: 46px;
+  background: #009CC2;
+}
+
+.footer {
+  margin: 0 auto;
+  width: 1600px;
+  padding: 60px 160px 80px 160px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+}
+
+.footer-nav-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.footer-nav-link:hover {
+  text-decoration: underline;
+}
+
+.footer-nav-link:first-child::after{
+  content: "";
+  width: 1px;
+  height: 8px;
+  background: #4E4E4E;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.footer-nav-link:last-child::before{
+  content: "";
+  width: 1px;
+  height: 8px;
+  background: #4E4E4E;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.footer-logo{
+  margin: 0;
+  margin-right: 68px;
+}
+
+.copyright {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #818181;
+}
