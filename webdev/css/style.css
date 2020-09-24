@@ -357,6 +357,7 @@ input:invalid:not(:placeholder-shown) {
 }
 
 .download {
+  background: #F5F6F7;
   padding: 119px 560px 180px 560px;
   display: flex;
   flex-direction: column;
@@ -400,10 +401,12 @@ input:invalid:not(:placeholder-shown) {
 }
 
 .button-text:hover{
+  cursor: pointer;
   background: #009CC2;
 }
 
 .button-icon {
+  cursor: pointer;
   padding: 13px 21px;
   width: 59px;
   height: 46px;
