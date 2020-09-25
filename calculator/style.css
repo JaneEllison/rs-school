@@ -7,13 +7,12 @@ body {
   padding-top: 40px;
 }
 .calc {
-  background-color: #1c93ee;
-  width: 385px;
+  background-color: #7B68EE;
   padding: 30px;
   border-radius: 6px;
 }
 .calc-display-input {
-  width: 360px;
+  width: 415px;
   height: 60px;
   margin: 20px 0;
   border-radius: 6px;
@@ -25,11 +24,11 @@ body {
 }
 .calc_button-row td {
   margin: 0 auto;
-  padding: 5px;
+  padding: auto;
 }
 .btn {
-  width: 85px;
-  height: 60px;
+  width: 75px;
+  height: 50px;
   background-color: #f4f4f4;
   font-size: 27px;
   color: #666666;
@@ -40,15 +39,15 @@ body {
   transition: 0.1s all;
 }
 .btn-hover-red:hover {
-  background-color: #d83e33;
+  background-color: #8B0000;
   color: #f2f2f2;
 }
-.btn-hover-orange:hover {
-  background-color: #ff6a00;
+.btn-hover-blue:hover {
+  background-color: #1E90FF;
   color: #f2f2f2;
 }
-.btn-hover-green:hover {
-  background-color: green;
+.btn-hover-purple:hover {
+  background-color: #4B0082;
   color: #f2f2f2;
 }
 .btn:active {
@@ -66,17 +65,23 @@ button {
   margin-left: 0;
   padding: 15px 24px;
 }
+.btn-long{
+  width: 100%;
+}
+.btn-long-result{
+  height: 123px;
+}
 .clear-btn {
   text-transform: uppercase;
 }
 
 @media screen and (max-width: 768px) {
   .calc {
-    width: 300px;
+    width: 380px;
     margin: 0 auto;
   }
   .calc-display-input {
-    width: 280px;
+    width: 360px;
   }
   input[placeholder] {
     font-size: 28px;
@@ -93,15 +98,11 @@ button {
   .btn {
     width: 64px;
   }
-}
-@media screen and (max-width: 400px) {
-  .calc {
-    width: 280px;
+  .btn-long{
+    width: 100%;
   }
-  .calc-display-input {
-    width: 260px;
-  }
-  .btn {
-    width: 60px;
+  .btn-long-result{
+    height: 120px;
   }
 }
+
