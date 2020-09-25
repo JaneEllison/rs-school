@@ -3,6 +3,8 @@ const operationsBtn = document.querySelectorAll ('.operator');
 const decimalBtn = document.getElementById ('decimal');
 const clearBtns = document.querySelectorAll ('.clear-btn');
 const display = document.getElementById ('display');
+const plusMinusBtn = document.getElementById ('plus-minus');
+
 let MemoryCurrentNumber = 0 ; //текуцее значение
 let MemoryNewNumber = false; //ввели новое число или нет
 let MemoryPendingOperation = ''; //операция, которая ожидается
@@ -33,7 +35,13 @@ for (var i=0; i < clearBtns.length; i++) {
 
 decimalBtn.addEventListener('click', decimal);
 
+plusMinusBtn.addEventListener ('click', (event) => {
+  plusMinus (event.target.textContent);
+});
 
+function plusMinus() {
+  return display.value = - +(display.value);;
+} 
 
 function numberPress(number) {
   if (MemoryNewNumber){
@@ -52,22 +60,39 @@ function numberPress(number) {
 function operation(op) {
   let localOperationMemory = display.value;
 
-  if (MemoryNewNumber && MemoryPendingOperation !== '=') {
-    display.value = MemoryCurrentNumber;
-  } else {
+  if (MemoryNewNumber && 
+      MemoryPendingOperation !== '=' && 
+      MemoryPendingOperation !== '√x' &&
+      MemoryPendingOperation !== '+/-'
+    ) {
+      display.value = Math.round(MemoryCurrentNumber * 1000000) / 1000000;
+    } else {
     MemoryNewNumber = true;
     if (MemoryPendingOperation === '+') {
-      MemoryCurrentNumber += parseFloat(localOperationMemory);
+      MemoryCurrentNumber += +localOperationMemory;
     } else if (MemoryPendingOperation === '-') {
-      MemoryCurrentNumber -= parseFloat(localOperationMemory);
+      MemoryCurrentNumber -= +localOperationMemory;
     } else if (MemoryPendingOperation === '*') {
-      MemoryCurrentNumber *= parseFloat(localOperationMemory);
+      MemoryCurrentNumber *= +localOperationMemory;
     } else if (MemoryPendingOperation === '/') {
-      MemoryCurrentNumber /= parseFloat(localOperationMemory);
+      MemoryCurrentNumber /= +localOperationMemory;
+    } else if (MemoryPendingOperation === 'xn') {
+      if (+localOperationMemory < 1 && 0 < +localOperationMemory){
+        MemoryCurrentNumber = +Math.pow(Math.abs(MemoryCurrentNumber), localOperationMemory);
+      } else {
+        MemoryCurrentNumber = +Math.pow(MemoryCurrentNumber, localOperationMemory);
+      }
+    } else if (op === '√x') {
+      if (+localOperationMemory <= 0){
+        return display.value = 'Error';
+      } else {
+        MemoryCurrentNumber = +Math.sqrt(+localOperationMemory);
+      }
     } else {
-      MemoryCurrentNumber = parseFloat(localOperationMemory);
+      MemoryCurrentNumber = +localOperationMemory;
     }
-    display.value = MemoryCurrentNumber;
+
+    display.value = Math.round(MemoryCurrentNumber * 1000000) / 1000000;
     MemoryPendingOperation = op;
   }
 };
