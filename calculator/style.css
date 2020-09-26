@@ -4,12 +4,22 @@ body {
 .main {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 40px;
 }
 .calc {
   background-color: #7B68EE;
   padding: 30px;
   border-radius: 6px;
+}
+.discription {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #b8dfff;
+  margin-left: 40px;
+  width: 400px;
+  height: 420px;
 }
 .calc-display-input {
   width: 415px;
