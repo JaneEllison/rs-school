@@ -112,12 +112,12 @@
   font-size: 15px;
   line-height: 160%;
   margin-top: 42px;
+  margin-bottom: 0;
   color: #CDCDCD;
 }
 
-.button_primary {
+.content__button {
   padding: 15px 45px;
-  width: 207px;
   margin-top: 42px;
   border-radius: 100px;
   border: none;
@@ -128,7 +128,11 @@
   color: #292929;
 }
 
-.button_primary:hover {
+.hero___button {
+  width: 207px;
+}
+
+.content__button:hover {
   cursor: pointer;
   background: #FDDCC4;
 }
@@ -166,5 +170,107 @@
   line-height: 160%;
   color: #4C4C4C;
   margin-top: 25px;
+  margin-bottom: 0;
 }
 
+.pets {
+  background: #F6F6F6;
+}
+
+.pets__content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 81px 0 100px 18px;
+}
+
+.pets__title{
+  max-width: 400px;
+  text-align: center;
+}
+
+.pets__slider {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.pets__slider_content {
+  display: flex;
+  margin: 0 54px;
+}
+
+.slider__arrow_btn {
+  padding: 21px 17px;
+  display: flex;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  background: #F6F6F6;
+}
+
+.slider__arrow_btn:hover {
+  cursor: pointer;
+  background: #FDDCC4;
+  border: 2px solid #FDDCC4;
+}
+
+.slider__arrow-right_btn {
+  transform: scale(-1, 1);
+}
+
+.inactive__icon {
+  border: 2px solid #CDCDCD;
+  /* сделать иконку svg и поменять ей fill, но это не точно  */
+}
+
+.slider__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 35px;
+  margin: 0 90px;
+  background: #FAFAFA;
+  border-radius: 9px;
+}
+
+.slider__card:first-child, .slider__card:last-child {
+  margin: 0;
+}
+
+.slider__card:hover {
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+.card__title {
+  margin: 30px 0;
+  font-family: Georgia;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+.card__btn {
+  background: #FAFAFA;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  padding: 12px 43px;
+  font-family: Georgia;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+}
+
+.card__btn:hover {
+  background: #FDDCC4;
+  cursor: pointer;
+  border: 2px solid #FDDCC4;
+}
+
+.pets__button {
+  margin: 0;
+  padding: 18px 45px;
+}
