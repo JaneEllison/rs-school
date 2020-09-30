@@ -356,6 +356,12 @@
   padding: 10px 15px;
   background: #F1CDB3;
   border-radius: 9px;
+  text-decoration: none;
+}
+
+.donation__card:hover {
+  cursor: pointer;
+  background: #FDDCC4;
 }
 
 .donation__card_number {
