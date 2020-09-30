@@ -317,3 +317,63 @@
   letter-spacing: 0.06em;
   color: #545454;
 }
+
+.donation {
+  background: #F6F6F6;
+}
+
+.donation__content {
+  width: 100%;
+  padding: 80px 0 100px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donation__content_info {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.donation__title {
+  max-width: 300px;
+}
+
+.donation__subtitle {
+  margin: 20px 0;
+  font-family: Georgia;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+.donation__card {
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background: #F1CDB3;
+  border-radius: 9px;
+}
+
+.donation__card_number {
+  margin-left: 15px;
+  font-family: Georgia;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+.donation__discr {
+  max-width: 380px;
+  margin-top: 20px;
+  font-family: Arial;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 18px;
+  color: #B2B2B2;
+}
+
