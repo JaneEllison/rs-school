@@ -383,3 +383,69 @@
   color: #B2B2B2;
 }
 
+.footer {
+  background: url(../../../assets/images/noise_transparent.png), 
+  radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), 
+  #211F20;
+}
+
+.footer__content {
+  width: 100%;
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+.footer__info {
+  display: flex;
+  margin-top: 16px;
+}
+
+.footer__contacts, .footer__location {
+  width: 279px;
+  margin-right: 160px;
+}
+
+.footer__location {
+  width: 302px;
+}
+
+.footer__title {
+  font-family: Georgia;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  margin-bottom: 34px;
+}
+
+.footer__title:first-child{
+  margin-bottom: 40px;
+}
+
+.footer__contacts_content, .footer__location_content {
+  display: flex;
+  align-items: center;
+}
+
+.footer__contacts_content:last-child {
+  margin-top: 40px;
+}
+
+.footer__location_content:last-child {
+  margin-top: 32px;
+}
+
+.footer__icon {
+  margin-right: 20px;
+}
+
+.contacts__link, .location__link {
+  font-family: Georgia;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #F1CDB3;
+  text-decoration: none;
+}
