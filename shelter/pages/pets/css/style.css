@@ -1,0 +1,247 @@
+*{
+  box-sizing: border-box;
+  font-weight: 400;
+}
+
+.header {
+  width: 100vw;
+  padding: 30px 0;
+}
+
+.wrapper {
+  display: flex;
+  margin: 0 auto;
+  max-width: 75rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo__link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo__title {
+  font-family: Georgia;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin: 0 0 10px 0;
+}
+
+.logo__subtitle {
+  font-family: Arial;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 110%;
+  letter-spacing: 0.1em;
+  color: #292929;
+}
+
+.menu {
+  display: flex;
+  width: 443px;
+}
+
+.list{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 5.5px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.list__link {
+  color: #545454;
+  font-family: Arial;
+  font-size: 15px;
+  line-height: 160%;
+  text-decoration: none;
+  padding-bottom: 4px;
+}
+
+.list__link_active{
+  border-bottom: solid 3px #F1CDB3;
+}
+
+.list__link:hover{
+  cursor: pointer;
+  color: #292929;;
+}
+
+.main {
+  width: 100vw;
+  background: #F6F6F6;
+}
+
+.pets__content {
+  display: flex;
+  margin: 0 auto;
+  max-width: 75rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0 100px 0;
+}
+
+.pets__title {
+  margin: 0;
+  max-width: 400px;
+  font-family: Georgia;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+  text-align: center;
+}
+
+.cards__container {
+  margin: 45px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 270px;
+  background: #FAFAFA;
+}
+
+.card__title {
+  font-family: Georgia;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin: 30px 0;
+}
+
+.card__btn {
+  background: #FAFAFA;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  padding: 13px 43px;
+  font-family: Georgia;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  margin-bottom: 30px;
+}
+
+.card__btn:hover {
+  background: #FDDCC4;
+  cursor: pointer;
+  border: 2px solid #FDDCC4;
+}
+
+.navigation {
+  display: flex;
+  width: 340px;
+  justify-content: space-between;
+}
+
+.navigation__button {
+  width: 52px;
+  height: 52px;
+  padding: 21px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  background: #F6F6F6;
+  font-family: Georgia;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #292929;
+}
+
+.button__paginator_inactive {
+  border: 2px solid #CDCDCD;
+  color: #CDCDCD;
+}
+
+.button__paginator_active {
+  background: #F1CDB3;
+  border: 2px solid #F1CDB3;;
+}
+
+
+.footer {
+  background: url(../../../assets/images/noise_transparent.png), 
+  radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), 
+  #211F20;
+}
+
+.footer__content {
+  width: 100%;
+  padding-top: 42px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer__info {
+  display: flex;
+  margin-top: 16px;
+}
+
+.footer__contacts, .footer__location {
+  width: 279px;
+  margin-right: 160px;
+}
+
+.footer__location {
+  width: 302px;
+}
+
+.footer__title {
+  font-family: Georgia;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  margin-bottom: 42px;
+}
+
+.footer__title_location{
+  margin-bottom: 33px;
+}
+
+.footer__contacts_content, .footer__location_content {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.footer__contacts_content:last-child {
+  margin-top: 43px;
+}
+
+.footer__location_content:last-child {
+  margin-top: 32px;
+}
+
+.footer__icon {
+  margin-right: 20px;
+}
+
+.contacts__link, .location__link {
+  font-family: Georgia;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #F1CDB3;
+  text-decoration: none;
+}
