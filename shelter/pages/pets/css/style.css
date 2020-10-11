@@ -6,6 +6,10 @@
 .header {
   width: 100vw;
   padding: 30px 0;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
 }
 
 .wrapper {
@@ -78,6 +82,7 @@
 .main {
   width: 100vw;
   background: #F6F6F6;
+  margin-top: 119px;
 }
 
 .pets__content {
@@ -114,6 +119,10 @@
   align-items: center;
   max-width: 270px;
   background: #FAFAFA;
+}
+
+.card:hover{
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
 
 .card__title {
@@ -153,7 +162,6 @@
 .navigation__button {
   width: 52px;
   height: 52px;
-  padding: 21px 17px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,6 +183,13 @@
 .button__paginator_active {
   background: #F1CDB3;
   border: 2px solid #F1CDB3;;
+}
+
+.button__paginator:hover {
+  cursor:pointer;
+  background: #FDDCC4;
+  border-color: #FDDCC4;
+  color: #292929;
 }
 
 
