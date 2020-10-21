@@ -265,3 +265,62 @@
 .footer__img {
   margin-top: 30px;
 }
+
+@media (max-width: 1280px) {
+  .wrapper {
+    max-width: 708px;
+  }
+
+  .pets__content {
+    padding: 82px 0 76px 0;
+  }
+
+  .cards__container {
+    margin-top: 30px;
+    padding-top: 0;
+    justify-content: center;
+    row-gap: 30px;
+    column-gap: 40px;
+  }
+
+  .card__btn {
+    margin-bottom: 30px;
+  }
+
+  .card:nth-child(7), .card:nth-child(8) {
+    display: none;
+  }
+
+  .navigation {
+    margin-top: 41px;
+  }
+
+  .footer__content {
+    flex-direction: column;
+    padding-left: 0px; 
+    padding-top: 0; 
+  }
+
+  .footer__title{
+    margin-top: 31px;
+  }
+
+  .footer__info {
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  .footer__contacts {
+    margin-right: 60px;
+  }
+
+  .footer__location {
+    margin-right: 0;
+  }
+
+  .footer__img {
+    display: flex;
+    justify-content: center;
+    margin-top: 65px;
+  }
+}
