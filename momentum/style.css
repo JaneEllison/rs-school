@@ -17,7 +17,7 @@ body {
 }
 
 .time {
-  font-size: 8rem;
+  font-size: 5rem;
 }
 
 h1 {
@@ -27,6 +27,14 @@ h1 {
 h2 {
   margin-bottom: 0.5rem;
   opacity: 0.8;
+}
+
+.name {
+  display: inline-block;
+}
+
+.focus {
+  display: inline-block;
 }
 
 @media (max-width: 700px) {
