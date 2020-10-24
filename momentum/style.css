@@ -13,11 +13,37 @@ body {
   text-align: center;
   height: 100vh;
   background-size: cover;
-  color: #000000;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  color: #fff;
+  transition: background-image 1.5s ease-in-out;
+  -webkit-transition: background-image 1.5s ease-in-out;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(85, 85, 85, 0.3);
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  padding: 30px 0;
+}
+
+.play__icon {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.play__icon:hover {
+  cursor: pointer;
 }
 
 .time {
-  font-size: 5rem;
+  font-size: 6rem;
 }
 
 h1 {
