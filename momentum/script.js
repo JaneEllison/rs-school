@@ -10,8 +10,10 @@ const time = document.querySelector ('.time'),
   temperature = document.querySelector('.temperature'),
   humidity = document.querySelector('.humidity'),
   cityInput = document.querySelector('.city'),
-  wind = document.querySelector('.wind');
-
+  wind = document.querySelector('.wind'),
+  quote = document.querySelector('blockquote'),
+  figcaption = document.querySelector('figcaption'),
+  randomBtm = document.querySelector('.random__icon');
 
 let bgCollection = ['night/04', 'night/18', 'night/09', 'night/07', 'night/08', 'night/19', 'morning/01', 'morning/04', 'morning/18', 'morning/08', 'morning/10', 'morning/12', 'day/02', 'day/04', 'day/05', 'day/20', 'day/09', 'day/12', 'evening/16', 'evening/10', 'evening/18', 'evening/07', 'evening/08', 'evening/19'],
   bgIndex,
@@ -254,7 +256,7 @@ async function getWeather() {
   const res = await fetch(url);
 
   if (!(res.ok)) {
-    alert('Try to choose city again, please.');
+    alert('Wrong city! Enter your city, please.');
     cityInput.textContent = '[Enter your city]' ;
     localStorage.setItem ('cityInput', '[Enter your city]');
     temperature.textContent = '';
@@ -317,8 +319,20 @@ cityInput.addEventListener('click', (event) => {
   cityInput.focus();
 })
 
+//get Random Quote
+async function getQuote() {
+  let response = await fetch('https://api.quotable.io/random');
+  let data = await response.json();
+  quote.innerHTML = `"${data.content}"`;
+  figcaption.textContent = data.author;
+}
+getQuote();
+
+randomBtm.addEventListener('click', getQuote);
+
 //Run
 showTime();
 getName();
 getFocus();
 getCity();
+getQuote();

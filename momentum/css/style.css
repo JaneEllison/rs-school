@@ -27,8 +27,16 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  padding: 30px 0;
+  display: flex;
+  justify-content: center;
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;}
 
 .play__icon {
   width: 50px;
@@ -36,10 +44,12 @@ body {
   position: absolute;
   top: 20px;
   left: 20px;
+  transition: 1s;
 }
 
 .play__icon:hover {
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 .weather {
@@ -91,6 +101,45 @@ h2 {
 
 .focus {
   display: inline-block;
+}
+
+.quoute__block {
+  width: 90%;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote {
+  text-align: right;
+  font-style: italic;
+
+}
+
+figcaption{
+  font-style: normal;
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+
+blockquote{
+  max-width: 100%;
+  padding-top: 10px;
+  border-top: 1px solid #fff;
+}
+
+.random__icon {
+  margin-top: -15px;
+  width: 50px;
+  height: 50px;
+}
+
+.random__icon:hover{
+  cursor: pointer;
+  transform: rotate(360deg);
+  transition: transform 5s;
+
 }
 
 @media (max-width: 700px) {
