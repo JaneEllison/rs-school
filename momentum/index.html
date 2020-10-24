@@ -4,13 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/owfont-regular.css">
+  <link rel="stylesheet" href="css/style.css" />
   <title>momentum</title>
 </head>
 <body>
   <div class="overlay">
     <div class="container">
       <img class = "play__icon" src="assets/icons/play-icon.png" alt="play-icon">
+      <div class="weather">
+        <div class="city" contenteditable="true"></div>
+        <div class="weather__for_city">
+          <i class="weather_icon owf"></i>
+          <div class="info">
+            <div class="temperature"></div>
+            <div class="humidity"></div>
+            <div class="wind"></div>
+          </div>
+        </div>
+      </div>
+
       <time class="time"></time>
       <h1>
         <span class="greeting"></span>
