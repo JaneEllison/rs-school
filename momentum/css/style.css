@@ -142,8 +142,116 @@ blockquote{
 
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 1200px){
+  .quoute__block {
+    width: 90%;
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 860px){
+  .info {
+    margin-left: 5px;
+  }
+  
   .time {
-    font-size: 6rem;
+    font-size: 4rem;
+  }
+  
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    margin-bottom: 0.25rem;
+  }
+
+  .weather {
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255,255,255,0.3);
+    width: 140px;
+    height: 90px;
+    font-size: 1rem;
+  }
+  
+  .city{
+    font-size: 1rem;
+  }
+
+  .play__icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .container {
+    padding: 10px 0;
+  }
+
+  .time {
+    font-size: 3rem;
+  }
+  
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size:1rem;
+  }
+  
+  h2 {
+    margin-bottom: 0.25rem;
+    font-size:1rem;
+  }
+
+  .weather {
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255,255,255,0.3);
+    width: 120px;
+    height: 70px;
+    font-size: 0.8rem;
+  }
+  
+  .city{
+    font-size: 0.8rem;
+  }
+
+  .play__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .quoute__block {
+    margin-top: 2rem;
+  }
+  
+  .quote {
+    font-size: 0.8rem;
+  }
+  
+  figcaption{
+    margin-top: 2px;
+    font-size: 0.6rem;
+  }
+
+  .random__icon {
+    margin-top: -15px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 550px){
+  .container {
+    padding-top: 80px;
+  }
+
+  .quote {
+    text-align: center;
+  }
+
+  .random__icon {
+    margin-top: 5px;
   }
 }
