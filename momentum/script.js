@@ -7,7 +7,7 @@ const time = document.querySelector ('.time'),
   monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   playIcon = document.querySelector ('.play__icon');
 
-let bgCollection = ['night/01', 'night/03', 'night/09', 'night/07', 'night/15', 'night/18', 'morning/01', 'morning/03', 'morning/04', 'morning/07', 'morning/09', 'morning/11', 'day/02', 'day/04', 'day/06', 'day/08', 'day/10', 'day/12', 'evening/05', 'evening/10', 'evening/13', 'evening/15', 'evening/17', 'evening/03'],
+let bgCollection = ['night/04', 'night/18', 'night/09', 'night/07', 'night/08', 'night/19', 'morning/01', 'morning/04', 'morning/18', 'morning/08', 'morning/10', 'morning/12', 'day/02', 'day/04', 'day/05', 'day/20', 'day/09', 'day/12', 'evening/16', 'evening/10', 'evening/18', 'evening/07', 'evening/08', 'evening/19'],
   bgIndex,
   startHours;
 
@@ -199,22 +199,28 @@ function showRandomImages() {
     const hour = new Date ().getHours();
 
     if(hour >= 6 && hour < 12 ) {
-      const imagesOfHours = curentBgCollection.slice(6,13);
+      const imagesOfHours = curentBgCollection.slice(6,12);
+      console.log(imagesOfHours)
+      console.log(curentBgCollection);
 
       imagesOfHours.push(imagesOfHours[0]);
       imagesOfHours.shift();
-      curentBgCollection.splice(6, 7, imagesOfHours);
-
+      curentBgCollection.splice(6, 6, imagesOfHours);
+      
       bgCollection = curentBgCollection.flat();
       localStorage.setItem('backgroundCollection', bgCollection);
     } else if (hour >= 12 && hour < 18) {
-      const imagesOfHours = curentBgCollection.slice(13, 18);
+      const imagesOfHours = curentBgCollection.slice(12, 18);
       
       imagesOfHours.push(imagesOfHours[0]);
       imagesOfHours.shift();
 
-      curentBgCollection.splice(13, 5, imagesOfHours);
+      curentBgCollection.splice(12, 6, imagesOfHours);
       bgCollection = curentBgCollection.flat();
+      
+      console.log(imagesOfHours)
+      console.log(curentBgCollection);
+
       localStorage.setItem('backgroundCollection', bgCollection);
     } else if (hour >= 18 && hour <= 23) {
       const imagesOfHours = curentBgCollection.slice(18);
@@ -240,6 +246,5 @@ function showRandomImages() {
 
 //Run
 showTime();
-setBackground();
 getName();
 getFocus();
