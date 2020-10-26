@@ -221,7 +221,6 @@
 .footer__content {
   width: 100%;
   padding-top: 12px;
-  padding-left: 20px;
   display: flex;
   justify-content: center;
 }
@@ -284,7 +283,7 @@
   margin-top: 30px;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1200px) {
   .wrapper {
     max-width: 708px;
   }
@@ -343,7 +342,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .wrapper {
     max-width: 300px;
   }
