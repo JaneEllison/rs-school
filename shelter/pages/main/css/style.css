@@ -103,8 +103,8 @@
 
 .hero {
   margin-top: 179px;
-  margin-left: 7.5px;
   display: flex;
+  justify-content: center;
 }
 
 .hero__content {
@@ -159,7 +159,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 80px auto 100px 183px;
+  margin: 80px auto 100px auto;
 }
 
 .about__image {
@@ -200,7 +200,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 81px 0 100px 18px;
+  margin: 79px auto 100px auto;
 }
 
 .pets__title{
@@ -312,7 +312,7 @@
 
 .help {
   width: 100%;
-  padding: 80px 21px 100px 40px;
+  margin: 78px auto 100px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -359,7 +359,7 @@
 
 .donation__content {
   width: 100%;
-  padding: 82px 0 100px 17px;
+  margin: 80px auto 100px auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,7 +432,6 @@
 .footer__content {
   width: 100%;
   padding-top: 42px;
-  padding-left: 20px;
   display: flex;
   justify-content: center;
 }
@@ -491,7 +490,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1270px) {
   .header {
     margin-top: 30px;
   }
@@ -546,7 +545,7 @@
   }
 
   .pets__content {
-    padding: 81px 0 100px 0;
+    margin: 81px 0 100px 0;
   }
 
   .pets__slider_content {
@@ -563,7 +562,7 @@
   }
 
   .help {
-    padding: 79px 0 100px 0;
+    margin: 79px auto 100px auto;
   }
 
   .help__list {
@@ -579,7 +578,6 @@
   .donation__content {
     padding-left: 0;
     flex-direction: column;
-    padding-bottom: 95px;
   }
 
   .donation__content_img {
@@ -594,7 +592,7 @@
 
   .footer__content {
     flex-direction: column;
-    padding-top: 30px;
+    padding-top: 28px;
     padding-left: 0px;  
   }
 
@@ -618,7 +616,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .header {
     margin-top: 30px;
   }
@@ -705,8 +703,8 @@
   }
 
   .pets__content {
-    padding-top: 40px;
-    padding-bottom: 38px;
+    margin-top: 40px;
+    margin-bottom: 38px;
   }
 
   .pets__title {
@@ -741,7 +739,7 @@
   }
 
   .help {
-    padding: 42px 0;
+    margin: 42px 0;
   }
 
   .help__list {
@@ -768,7 +766,7 @@
   }
 
   .donation__content{
-    padding: 42px 0;
+    margin: 42px 0;
   }
 
   .donation__content_info {
