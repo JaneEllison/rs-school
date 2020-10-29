@@ -343,27 +343,108 @@
 }
 
 @media (max-width: 767px) {
+  .lock {
+    overflow: hidden;
+  }
+  
   .wrapper {
-    max-width: 300px;
+    width: 300px;
   }
 
   .wrapper__mobile {
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-around;
+    z-index: 20;
   }
   
+  .wrapper__mobile_active{
+    width: 100%;
+    margin: 0;
+    margin-right: 20px;
+    justify-content: flex-end;
+    padding-right: 30px;
+  }
+
+  .logo{
+    z-index: 30;
+  }
+
   .menu {
-    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    transform: translateX(0);
+    width: 320px;
+    height: 100vh;
+    margin: 0;
+    opacity: 0;
+    background-color: #9b9a9a;
+    transition: opacity .3s ease-out, -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out, opacity .3s ease-out;
+    transition: transform .3s ease-out, opacity .3s ease-out, -webkit-transform .3s ease-out;
+    overflow: auto;
+    z-index: 20;
+  }
+  
+  .menu__visible {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transform: translateX(-320px);
+    transform: translateX(-320px);
+    opacity: 1;
+  }
+
+  .m__menu_button_rotate{
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    z-index: 30;
+  }
+
+  .list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .list__item {
+    margin-bottom: 40px;
+  }
+
+  .list__link {
+    font-size: 32px;
+  }
+
+  .list__item:first-child{
+    margin-top: 248px;
   }
 
   .m__menu_button{
-    margin-left: 40px;
+    margin-left: 41px;
     display: flex;
   }
 
   .menu__line {
     display: flex;
+  }
+
+  .header__overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+  }
+
+  .header__overlay_visible{
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .pets__content {
