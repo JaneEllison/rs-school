@@ -14,10 +14,12 @@
   bottom: 0;
   width: 100%;
   padding: 5px 0;
-  background: #004134;
+  background: #08002e;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   user-select: none;
   transition: bottom 0.4s;
+  display: flex;
+  justify-content: center;
 }
 
 .keyboard--hidden {
@@ -26,6 +28,7 @@
 
 .keyboard__keys {
   text-align: center;
+  width: 90%;
 }
 
 .keyboard__key {
@@ -78,5 +81,5 @@
 }
 
 .keyboard__key--dark {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgb(255, 230, 0);
 }
