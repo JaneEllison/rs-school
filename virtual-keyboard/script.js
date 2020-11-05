@@ -146,10 +146,11 @@ const Keyboard = {
         case 'en':
           keyElement.classList.add('keyboard__key--wide');
           keyElement.setAttribute('id', 'lang');
+
           if (this.properties.lang === 'en') {
-            keyElement.innerHTML = 'RU';
+            keyElement.innerHTML = 'en';
           } else {
-            keyElement.innerHTML = 'EN';
+            keyElement.innerHTML = 'ru';
           }
 
          
@@ -167,7 +168,10 @@ const Keyboard = {
 
           keyElement.addEventListener ('click', () => {
             this._toggleCapsLock();
-            keyElement.classList.toggle('keyboard__key--active', this.properties.capslock);
+
+            const caps = document.getElementById('caps');
+            caps.classList.toggle('keyboard__key--active', this.properties.caps);
+            
             this._triggerEvent('oninput');
           });
 
@@ -186,13 +190,15 @@ const Keyboard = {
 
         case 'shift':
           keyElement.classList.add('keyboard__key--wide', 'keyboard__key--activatable');
-            
           keyElement.innerHTML = createIconHTML('keyboard_arrow_up');
           keyElement.id = 'shift';
 
           keyElement.addEventListener('click', () => {
             this._toggleShift();
-            keyElement.classList.toggle('keyboard__key--active', this.properties.shift);
+
+            const shift = document.getElementById('shift');
+            shift.classList.toggle('keyboard__key--active', this.properties.shift);
+
             this._triggerEvent('oninput');
           });
 
@@ -277,7 +283,13 @@ const Keyboard = {
         keyElement.textContent = key.toLowerCase();
 
         keyElement.addEventListener ('click', () => {
-          this.properties.value += this.properties.capslock ? key.toUpperCase() : key.toLowerCase();
+          if (this.properties.capslock && this.properties.shift){
+            this.properties.value += key.toLowerCase();
+          } else if (this.properties.capslock || this.properties.shift) {
+            this.properties.value += key.toUpperCase();
+          } else {
+            this.properties.value += key.toLowerCase();
+          }
           this._triggerEvent('oninput');
         });
 
@@ -305,7 +317,15 @@ const Keyboard = {
 
     for (const key of this.elements.keys) {
       if (key.childElementCount === 0) {
-        key.textContent = this.properties.capslock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+        if (this.properties.capslock && !this.properties.shift) {
+          key.textContent = key.textContent.toUpperCase();
+        } else if (this.properties.capslock && this.properties.shift) {
+          key.textContent = key.textContent.toLowerCase();
+        } else if (!this.properties.capslock && this.properties.shift) {
+          key.textContent = key.textContent.toUpperCase();
+        } else { 
+          key.textContent = key.textContent.toLowerCase();
+        }
       }
     }
   }, 
@@ -323,9 +343,27 @@ const Keyboard = {
   _toggleShift() {
     this.properties.shift = !this.properties.shift;
     this._changeKeys();
+
     for (const key of this.elements.keys) {
       if (key.childElementCount === 0) {
-        key.textContent = this.properties.shift ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+        if (this.properties.shift && !this.properties.capslock) {
+          key.textContent = key.textContent.toUpperCase();
+
+        } else if (this.properties.shift && this.properties.capslock) {
+          key.textContent = key.textContent.toLowerCase();
+
+          const caps = document.getElementById('caps');
+          caps.classList.add('keyboard__key--active', this.properties.caps);
+
+        } else if (!this.properties.shift && this.properties.capslock) {
+          key.textContent = key.textContent.toUpperCase();
+
+          const caps = document.getElementById('caps');
+          caps.classList.add('keyboard__key--active', this.properties.caps);
+
+        } else { 
+          key.textContent = key.textContent.toLowerCase();
+        }
       }
     }
   },
@@ -334,7 +372,7 @@ const Keyboard = {
     this.elements.keysContainer.innerHTML = '';
     this.elements.keysContainer.appendChild(this._createKeys());
     this.elements.keys = this.elements.keysContainer.querySelectorAll('.keyboard__key');
-},
+  },
 
   open(initialValue, oninput, onclose) {
     this.properties.value = initialValue || '';
