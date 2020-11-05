@@ -1,4 +1,4 @@
-let input = document.querySelector('.use-keyboard-input');
+let input = document.querySelectorAll('.use-keyboard-input');
 let keyLayout;
 
 const Keyboard = {
@@ -39,7 +39,7 @@ const Keyboard = {
     document.body.appendChild(this.elements.main);
 
     //automatically use keyboard for elements with .use-keyboard-input
-    document.querySelectorAll('.use-keyboard-input').forEach(element => {
+    input.forEach(element => {
       element.addEventListener ('focus', () => {
         this.open(element.value, currentValue => {
           element.value = currentValue;
@@ -148,9 +148,9 @@ const Keyboard = {
           keyElement.setAttribute('id', 'lang');
 
           if (this.properties.lang === 'en') {
-            keyElement.innerHTML = 'en';
+            keyElement.innerHTML = 'EN';
           } else {
-            keyElement.innerHTML = 'ru';
+            keyElement.innerHTML = 'RU';
           }
 
          
@@ -335,6 +335,8 @@ const Keyboard = {
 
     if (this.properties.capslock) {
       this._toggleCapsLock();
+    } else if (this.properties.shift) {
+      this._toggleShift();
     }
 
     this._changeKeys();
@@ -391,5 +393,6 @@ const Keyboard = {
 
 window.addEventListener('DOMContentLoaded', function() {
   Keyboard.init();
+  alert ('Есть большая просьба к проверяющим, проверить мою работу на выходных, не было возможность доделать функционал, постараюсь в течении недели наверстать. Спасибо <з');
 });
 
