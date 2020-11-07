@@ -28,12 +28,12 @@
 
 .keyboard__keys {
   text-align: center;
-  width: 90%;
+  width: 100%;
 }
 
 .keyboard__key {
   height: 45px;
-  width: 6%;
+  width: 5%;
   max-width: 90px;
   margin: 3px;
   border-radius: 4px;
@@ -57,11 +57,11 @@
 }
 
 .keyboard__key--wide {
-  width: 12%;
+  width: 10%;
 }
 
 .keyboard__key--extra-wide {
-  width: 36%;
+  width: 30%;
   max-width: 500px;
 }
 
