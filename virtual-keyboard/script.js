@@ -19,8 +19,7 @@ const Keyboard = {
     capslock: false,
     shift: false,
     lang: 'en',
-    start: 0,
-    end: 0,
+    curentCursor: 0
   },
 
   init () {
@@ -45,6 +44,12 @@ const Keyboard = {
         this.open(element.value, currentValue => {
           element.value = currentValue;
         });
+      });
+      element.addEventListener("click", () => {
+        element.selectionStart = this.properties.curentCursor;
+        element.selectionEnd = this.properties.curentCursor;
+
+        console.log(element.selectionStart, this.properties.curentCursor)
       });
     });
   },
@@ -128,6 +133,13 @@ const Keyboard = {
           keyElement.addEventListener ('click', () => {
             this.properties.value = this.properties.value.substring(0, this.properties.value.length -1);
             this._triggerEvent('oninput');
+
+            this.properties.curentCursor+=1;
+          
+            var input = document.getElementById('use-keyboard-input');
+            input.selectionStart = this.properties.curentCursor;
+            input.selectionEnd = this.properties.curentCursor;
+            input.focus();
           });
 
         break;
@@ -139,6 +151,13 @@ const Keyboard = {
           keyElement.addEventListener('click', () => {
             this.properties.value += '    ';
             this._triggerEvent ('oninput');
+
+            this.properties.curentCursor+=1;
+          
+            var input = document.getElementById('use-keyboard-input');
+            input.selectionStart = this.properties.curentCursor;
+            input.selectionEnd = this.properties.curentCursor;
+            input.focus();
           });
 
         break;
@@ -185,6 +204,13 @@ const Keyboard = {
           keyElement.addEventListener ('click', () => {
             this.properties.value += '\n';
             this._triggerEvent('oninput');
+
+            this.properties.curentCursor+=1;
+          
+            var input = document.getElementById('use-keyboard-input');
+            input.selectionStart = this.properties.curentCursor;
+            input.selectionEnd = this.properties.curentCursor;
+            input.focus();
           });
 
         break;
@@ -255,6 +281,13 @@ const Keyboard = {
             keyElement.addEventListener ('click', () => {
               this.properties.value += ' ';
               this._triggerEvent('oninput');
+              
+              this.properties.curentCursor+=1;
+          
+              var input = document.getElementById('use-keyboard-input');
+              input.selectionStart = this.properties.curentCursor;
+              input.selectionEnd = this.properties.curentCursor;
+              input.focus();
             });
   
         break;
@@ -292,6 +325,13 @@ const Keyboard = {
             this.properties.value += key.toLowerCase();
           }
           this._triggerEvent('oninput');
+
+          this.properties.curentCursor+=1;
+          
+          var input = document.getElementById('use-keyboard-input');
+          input.selectionStart = this.properties.curentCursor;
+          input.selectionEnd = this.properties.curentCursor;
+          input.focus();
         });
 
       break;
