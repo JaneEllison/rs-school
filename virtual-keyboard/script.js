@@ -5,7 +5,8 @@ const Keyboard = {
   elements: {
     main: null,
     keysContainer: null,
-    keys: []
+    keys: [],
+    textarea: null
   },
 
   eventHandlers: {
@@ -393,6 +394,5 @@ const Keyboard = {
 
 window.addEventListener('DOMContentLoaded', function() {
   Keyboard.init();
-  alert ('Есть большая просьба к проверяющим, проверить мою работу на выходных, не было возможность доделать функционал, постараюсь в течении недели наверстать. Спасибо <з');
 });
 
