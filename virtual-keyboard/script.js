@@ -48,8 +48,6 @@ const Keyboard = {
       element.addEventListener("click", () => {
         element.selectionStart = this.properties.curentCursor;
         element.selectionEnd = this.properties.curentCursor;
-
-        console.log(element.selectionStart, this.properties.curentCursor)
       });
     });
   },
@@ -269,7 +267,7 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML('keyboard_arrow_right');
 
           keyElement.addEventListener('click', () => {
-            console.log('click arrow right')
+            this._caretPosition("use-keyboard-input", 1);
           });
 
         break;
@@ -281,7 +279,7 @@ const Keyboard = {
             keyElement.addEventListener ('click', () => {
               this.properties.value += ' ';
               this._triggerEvent('oninput');
-              
+
               this.properties.curentCursor+=1;
           
               var input = document.getElementById('use-keyboard-input');
@@ -297,7 +295,7 @@ const Keyboard = {
             keyElement.innerHTML = createIconHTML('keyboard_arrow_left');
 
             keyElement.addEventListener('click', () => {
-              console.log('click arrow left')
+              this._caretPosition("use-keyboard-input", -1);
             });
 
         break;
@@ -317,18 +315,25 @@ const Keyboard = {
         keyElement.textContent = key.toLowerCase();
 
         keyElement.addEventListener ('click', () => {
+
+          // this.properties.value = this.properties.value.substring(0, this.properties.curentCursor)
+          // + keyElement.textContent
+          // + this.properties.value.substring(this.properties.curentCursor)
+
+          this.properties.curentCursor += 1;
+          
+          
           if (this.properties.capslock && this.properties.shift){
             this.properties.value += key.toLowerCase();
           } else if (this.properties.capslock || this.properties.shift) {
             this.properties.value += key.toUpperCase();
           } else {
             this.properties.value += key.toLowerCase();
-          }
-          this._triggerEvent('oninput');
+          }          
 
-          this.properties.curentCursor+=1;
+          this._triggerEvent('oninput');
           
-          var input = document.getElementById('use-keyboard-input');
+          let input = document.getElementById('use-keyboard-input');
           input.selectionStart = this.properties.curentCursor;
           input.selectionEnd = this.properties.curentCursor;
           input.focus();
@@ -415,6 +420,19 @@ const Keyboard = {
     this.elements.keysContainer.innerHTML = '';
     this.elements.keysContainer.appendChild(this._createKeys());
     this.elements.keys = this.elements.keysContainer.querySelectorAll('.keyboard__key');
+  },
+
+  _caretPosition(inputId, caretPosition) {
+    var input = document.getElementById(inputId);
+    input.focus();
+
+    var position = input.selectionStart;
+
+    if(input != null) {
+      input.selectionStart = position + caretPosition;
+      input.selectionEnd = position  + caretPosition;
+      this.properties.curentCursor = position + caretPosition;
+    }
   },
 
   open(initialValue, oninput, onclose) {
