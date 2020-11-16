@@ -1,9 +1,12 @@
 'use strict';
 
-const field = document.querySelector('.field');
+const field = document.createElement ('div');
+field.className = 'field';
+document.body.appendChild(field);
 const cellSize = 100;
 
 const empty = {
+  value: 15,
   top: 3,
   left: 3
 };
@@ -32,17 +35,32 @@ function move(index) {
 
   cell.left = emptyLeft;
   cell.top = emptyTop;
+
+  const isFunished = cells.every(cell => {
+    return cell.value  === cell.top * 4 + cell.left;
+  });
+
+  if (isFunished) {
+    alert('Вы выйграли!');
+  }
 }
 
+const numbers = [...Array(15).keys()]
+  // .sort (() => Math.random() - 0.5);
+
+
 for (let i = 0; i < 15; i++) {
-  const cell = document.createElement ('div'); 
+  const cell = document.createElement ('div');
+  const value = numbers[i]+1;
+  
   cell.className = 'cell';
-  cell.innerHTML = i+1;
+  cell.innerHTML = value;
 
   const left = i % 4;
   const top = (i - left) / 4;
   
   cells.push ({
+    value: value - 1,
     left: left,
     top: top,
     element: cell
@@ -55,6 +73,5 @@ for (let i = 0; i < 15; i++) {
 
   cell.addEventListener ('click', () => {
     move(i);
-  })
-  
+  });
 };
