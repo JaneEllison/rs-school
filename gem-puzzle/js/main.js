@@ -194,6 +194,12 @@ function timerZeroed() {
 }
 
 window.addEventListener('DOMContentLoaded', init);
+
+window.addEventListener('DOMContentLoaded', () => {
+  alert ('Огрооооомная просьба к проверяющим, проверить к ближе к пятнице, так как были обстоятельства, из-за которых не было возможности доделать работу раньше. Постараюсь все наверстать ><" Спасибо за понимание <з ');
+});
+
+
 buttonRestart.addEventListener('click', () => {
   buttonRestart.innerText = 'Restart';
   field.textContent = '';
