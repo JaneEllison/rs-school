@@ -9,6 +9,8 @@ const info = document.createElement ('div');
 let field = document.createElement ('div');
 let seconds = 0;
 let timerOn = false;
+let moveCount = 0;
+let moveCountOn = false;
 
 //добавление элементам классов
 wrapper.classList.add ('wrapper');
@@ -25,7 +27,7 @@ buttonPause.innerText = 'Pause';
 buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
 info.innerHTML = `
 <span class="time">Time: 00:00:00</span>
-<span class = 'moves'>Moves: 0</span>`;
+<span class = 'moves'>Moves: ${moveCount}</span>`;
 
 //добавление родительских эл-тов
 document.body.appendChild(wrapper);
@@ -76,10 +78,6 @@ function init () {
     cell.style.top = `${top * cellSize}px`;
 
     field.append(cell);
-
-    cell.addEventListener ('click', () => {
-      move(i);
-    });
   };
 
   cells.push(empty);
@@ -117,6 +115,8 @@ function start () {
 
     cell.left = emptyLeft;
     cell.top = emptyTop;
+
+    setMoves();
 
     //конец игры
     const isFunished = cells.every(cell => {
@@ -170,6 +170,14 @@ function start () {
     setTimer()
   }
 
+  if (moveCountOn) {
+    moveCount = 0;
+    let moves = document.querySelector ('.moves')
+    moves.innerHTML = `Moves: ${moveCount}`;
+  } else {
+    moveCountOn = true;
+  }
+
 };
 
 function addZero(n) {
@@ -191,14 +199,16 @@ function timerZeroed() {
   const time = document.querySelector ('.time');
   seconds = 0;
   time.innerHTML = "Time: 00:00:00";
+};
+
+function setMoves () {
+  let moves = document.querySelector ('.moves')
+ 
+  moveCount += 1;
+  moves.innerHTML = `Moves: ${moveCount}`;
 }
 
 window.addEventListener('DOMContentLoaded', init);
-
-window.addEventListener('DOMContentLoaded', () => {
-  alert ('Огрооооомная просьба к проверяющим, проверить к ближе к пятнице, так как были обстоятельства, из-за которых не было возможности доделать работу раньше. Постараюсь все наверстать ><" Спасибо за понимание <з ');
-});
-
 
 buttonRestart.addEventListener('click', () => {
   buttonRestart.innerText = 'Restart';
