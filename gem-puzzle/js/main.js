@@ -14,6 +14,7 @@ let seconds = 0;
 let timerOn = false;
 let moveCount = 0;
 let moveCountOn = false;
+let timeFinish = '';
 
 //добавление элементам классов
 wrapper.classList.add ('wrapper');
@@ -76,7 +77,7 @@ function createField () {
     });
 
     if (isFunished) {
-      alert('Вы выйграли!');
+      alert(`Поздравляю! Вы выйграли. Ваш результат: ${timeFinish}. Moves: ${moveCount}. `);
     }
   };
   
@@ -174,6 +175,7 @@ function setTimer () {
   let min = parseInt(seconds / 60 % 60);
   let sec = parseInt(seconds % 60);
   time.innerHTML = `Time: ${addZero(hour)}:${addZero(min)}:${addZero(sec)}`;
+  timeFinish = time.innerHTML;
 
   seconds++;
   let timeout = setTimeout(setTimer, 1000);
