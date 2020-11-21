@@ -5,6 +5,7 @@ const navigation = document.createElement ('div');
 const buttonRestart = document.createElement ('button');
 const buttonSound = document.createElement ('button');
 const info = document.createElement ('div');
+const soundElement = document.createElement ('div');
 
 const cellSize = 100;
 let field = document.createElement ('div');
@@ -14,14 +15,17 @@ let timerOn = false;
 let moveCount = 0;
 let moveCountOn = false;
 let timeFinish = '';
+let soundOn = false;
 
 //добавление элементам классов
 wrapper.classList.add ('wrapper');
 navigation.classList.add ('navigation');
 buttonRestart.classList.add ('button', 'btn__restart');
-buttonSound.classList.add ('button', 'btn__sound');
+buttonSound.classList.add ('button', 'btn__sound', 'on');
 info.classList.add ('info');
 field.classList.add ('field');
+soundElement.classList.add ('play-sound');
+soundElement.classList.add ('hidden');
 
 //добавление в кнопки текста
 buttonRestart.innerText = 'Start';
@@ -29,6 +33,7 @@ buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
 info.innerHTML = `
 <span class="time">Time: 00:00:00</span>
 <span class = 'moves'>Moves: ${moveCount}</span>`;
+soundElement.innerHTML = `<audio class="audio" src="./assets/sound/move.mp3"></audio>`
 
 //добавление родительских эл-тов
 document.body.appendChild(wrapper);
@@ -37,6 +42,7 @@ wrapper.appendChild (info);
 wrapper.appendChild (field);
 navigation.appendChild (buttonRestart);
 navigation.appendChild (buttonSound);
+wrapper.appendChild (soundElement);
 
 //создание самого поля
 function createField () {
@@ -67,13 +73,17 @@ function createField () {
       setTimer()
     }
 
+    if(buttonSound.classList.contains ('on')){
+      setSound();
+    }
+
     //конец игры
     const isFunished = cells.every(cell => {
       return cell.value  === cell.top * 4 + cell.left;
     });
 
     if (isFunished) {
-      alert(`Поздравляю! Вы выйграли. Ваш результат: ${timeFinish}. Moves: ${moveCount}. `);
+      alert(`Поздравляю! Вы выйграли. Ваш результат: Time: ${timeFinish}. Moves: ${moveCount}. `);
     }
   };
   
@@ -171,7 +181,7 @@ function setTimer () {
   let min = parseInt(seconds / 60 % 60);
   let sec = parseInt(seconds % 60);
   time.innerHTML = `Time: ${addZero(hour)}:${addZero(min)}:${addZero(sec)}`;
-  timeFinish = time.innerHTML;
+  timeFinish = `${addZero(hour)}:${addZero(min)}:${addZero(sec)}`;
 
   seconds++;
   let timeout = setTimeout(setTimer, 1000);
@@ -188,7 +198,24 @@ function setMoves () {
  
   moveCount += 1;
   moves.innerHTML = `Moves: ${moveCount}`;
-}
+};
+
+function setSound () {
+  const audio = document.querySelector(".audio");
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play();
+};
+
+buttonSound.addEventListener ('click', () => {
+  buttonSound.classList.toggle ('on');
+
+  if(buttonSound.classList.contains ('on')){
+    buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
+  } else {
+    buttonSound.innerHTML = `<i class="material-icons">music_off</i>`;;
+  }
+})
 
 window.addEventListener('DOMContentLoaded', createField);
 buttonRestart.addEventListener('click', () => {
