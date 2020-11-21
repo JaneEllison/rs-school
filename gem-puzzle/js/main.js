@@ -123,7 +123,7 @@ function createField () {
 }; 
 
 function startNewGame() {
-  numbers = numbers.sort (() => Math.random() - 0.5);
+  randomSort(numbers);
   createField();
 
   if (timerOn) {
@@ -140,6 +140,29 @@ function startNewGame() {
     moveCountOn = true;
   }
 }
+
+function randomSort (numbers) {
+  numbers.sort(() => Math.random() - 0.5);
+  let sum = 1;
+
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i; j < numbers.length; j++) {
+      if (numbers[i] > numbers[j]) {
+        sum++;
+      }
+    }
+  }
+
+  sum++;
+  
+  if (sum % 2 === 0) {
+    return numbers;
+  } else {
+    randomSort(numbers);
+  } 
+     
+  return numbers;
+};
 
 function addZero(n) {
   return (parseInt(n, 10) < 10 ? "0" : "") + n;
