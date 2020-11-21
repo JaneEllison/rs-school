@@ -3,7 +3,6 @@
 const wrapper = document.createElement ('div');
 const navigation = document.createElement ('div');
 const buttonRestart = document.createElement ('button');
-const buttonPause = document.createElement ('button');
 const buttonSound = document.createElement ('button');
 const info = document.createElement ('div');
 
@@ -20,14 +19,12 @@ let timeFinish = '';
 wrapper.classList.add ('wrapper');
 navigation.classList.add ('navigation');
 buttonRestart.classList.add ('button', 'btn__restart');
-buttonPause.classList.add ('button', 'btn__pause');
 buttonSound.classList.add ('button', 'btn__sound');
 info.classList.add ('info');
 field.classList.add ('field');
 
 //добавление в кнопки текста
 buttonRestart.innerText = 'Start';
-buttonPause.innerText = 'Pause';
 buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
 info.innerHTML = `
 <span class="time">Time: 00:00:00</span>
@@ -39,7 +36,6 @@ wrapper.appendChild (navigation);
 wrapper.appendChild (info);
 wrapper.appendChild (field);
 navigation.appendChild (buttonRestart);
-navigation.appendChild (buttonPause);
 navigation.appendChild (buttonSound);
 
 //создание самого поля
