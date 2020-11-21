@@ -18,12 +18,12 @@ body {
 .navigation {
   width: 400px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 25px;
 }
 
 .button {
-  width: 30%;
+  width: 50%;
   height: 30px;
   border: none;
   background-color: rgba(4, 112, 0, 0.4);;
@@ -44,8 +44,6 @@ body {
   color: #ffffff;
   border-radius: 10px;
 }
-
-
 
 .field {
   display: flex;
@@ -70,4 +68,9 @@ body {
   align-items: center;
   transition: all 1s;
   cursor: pointer;
+}
+
+.hidden {
+  width: 0px;
+  height: 0px;
 }
