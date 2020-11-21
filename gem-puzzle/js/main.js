@@ -6,9 +6,14 @@ const buttonRestart = document.createElement ('button');
 const buttonPause = document.createElement ('button');
 const buttonSound = document.createElement ('button');
 const info = document.createElement ('div');
+
+const cellSize = 100;
 let field = document.createElement ('div');
+let numbers = [...Array(15).keys()];
 let seconds = 0;
 let timerOn = false;
+let moveCount = 0;
+let moveCountOn = false;
 
 //добавление элементам классов
 wrapper.classList.add ('wrapper');
@@ -25,7 +30,7 @@ buttonPause.innerText = 'Pause';
 buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
 info.innerHTML = `
 <span class="time">Time: 00:00:00</span>
-<span class = 'moves'>Moves: 0</span>`;
+<span class = 'moves'>Moves: ${moveCount}</span>`;
 
 //добавление родительских эл-тов
 document.body.appendChild(wrapper);
@@ -36,66 +41,8 @@ navigation.appendChild (buttonRestart);
 navigation.appendChild (buttonPause);
 navigation.appendChild (buttonSound);
 
-
-const cellSize = 100;
-
-function init () {
-  //пустая ячейка
-  const empty = {
-    value: 15,
-    top: 3,
-    left: 3
-  };
-
-  //создание массива ячеек
-  const cells = [];
-
-  //рандом значений
-  const numbers = [...Array(15).keys()];
-
-
-  for (let i = 0; i < 15; i++) {
-    //значение ячейки
-    const cell = document.createElement ('div');
-    const value = numbers[i];
-
-    cell.className = 'cell';
-    cell.innerHTML = value + 1;
-
-    const left = i % 4;
-    const top = (i - left) / 4;
-
-    cells.push ({
-      value: value,
-      left: left,
-      top: top,
-      element: cell
-    });
-
-    cell.style.left = `${left * cellSize}px`;
-    cell.style.top = `${top * cellSize}px`;
-
-    field.append(cell);
-
-    cell.addEventListener ('click', () => {
-      move(i);
-    });
-  };
-
-  cells.push(empty);
-};
-
-function start () {
-  //пустая ячейка
-  const empty = {
-    value: 15,
-    top: 3,
-    left: 3
-  };
-
-  //создание массива ячеек
-  const cells = [];
-
+//создание самого поля
+function createField () {
   //движение ячейки
   function move(index) {
     const cell = cells[index];
@@ -118,6 +65,11 @@ function start () {
     cell.left = emptyLeft;
     cell.top = emptyTop;
 
+    if (!timerOn) {
+      timerOn = true;
+      setTimer()
+    }
+
     //конец игры
     const isFunished = cells.every(cell => {
       return cell.value  === cell.top * 4 + cell.left;
@@ -126,12 +78,17 @@ function start () {
     if (isFunished) {
       alert('Вы выйграли!');
     }
-  }
+  };
+  
+  //пустая ячейка
+  const empty = {
+    value: 15,
+    top: 3,
+    left: 3
+  };
 
-  //рандом значений
-  const numbers = [...Array(15).keys()]
-  .sort (() => Math.random() - 0.5);
-
+  //создание массива ячеек
+  const cells = [];
 
   for (let i = 0; i < 15; i++) {
     //значение ячейки
@@ -158,10 +115,16 @@ function start () {
 
     cell.addEventListener ('click', () => {
       move(i);
+      setMoves();
     });
   };
 
   cells.push(empty);
+}; 
+
+function startNewGame() {
+  numbers = numbers.sort (() => Math.random() - 0.5);
+  createField();
 
   if (timerOn) {
     timerZeroed();    
@@ -170,7 +133,13 @@ function start () {
     setTimer()
   }
 
-};
+  if (moveCountOn) {
+    let moves = document.querySelector ('.moves')
+    moves.innerHTML = `Moves: ${moveCount}`;
+  } else {
+    moveCountOn = true;
+  }
+}
 
 function addZero(n) {
   return (parseInt(n, 10) < 10 ? "0" : "") + n;
@@ -191,20 +160,22 @@ function timerZeroed() {
   const time = document.querySelector ('.time');
   seconds = 0;
   time.innerHTML = "Time: 00:00:00";
+};
+
+function setMoves () {
+  let moves = document.querySelector ('.moves')
+ 
+  moveCount += 1;
+  moves.innerHTML = `Moves: ${moveCount}`;
 }
 
-window.addEventListener('DOMContentLoaded', init);
-
-window.addEventListener('DOMContentLoaded', () => {
-  alert ('Огрооооомная просьба к проверяющим, проверить к ближе к пятнице, так как были обстоятельства, из-за которых не было возможности доделать работу раньше. Постараюсь все наверстать ><" Спасибо за понимание <з ');
-});
-
-
+window.addEventListener('DOMContentLoaded', createField);
 buttonRestart.addEventListener('click', () => {
   buttonRestart.innerText = 'Restart';
   field.textContent = '';
-  start();
+  moveCount = 0;
+  let moves = document.querySelector ('.moves')
+  moves.innerHTML = `Moves: ${moveCount}`;
+  startNewGame();
 });
-
-
 
