@@ -130,7 +130,7 @@ function createField () {
   addBg ();
 
   function addBg () {
-    let urlBg = `../assets/img/bg.jpg`;
+    let urlBg = `../gem-puzzle/assets/img/bg.jpg`;
   
     for (let i = 0; i < 15; i++) {
       let cell = cells[i]; 
