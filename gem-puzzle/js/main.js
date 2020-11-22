@@ -86,7 +86,7 @@ function createField () {
       alert(`Поздравляю! Вы выйграли. Ваш результат: Time: ${timeFinish}. Moves: ${moveCount}. `);
     }
   };
-  
+
   //пустая ячейка
   const empty = {
     value: 15,
@@ -109,6 +109,7 @@ function createField () {
     const top = (i - left) / 4;
 
     cells.push ({
+      id: i,
       value: value,
       left: left,
       top: top,
@@ -124,6 +125,24 @@ function createField () {
       move(i);
       setMoves();
     });
+  };
+
+  addBg ();
+
+  function addBg () {
+    let urlBg = `../assets/img/bg.jpg`;
+  
+    for (let i = 0; i < 15; i++) {
+      let cell = cells[i]; 
+      let idBg = +cell.value;
+  
+      let bgTop = Math.floor(idBg / 4) * cellSize;
+      let bgLeft = (idBg % 4) * cellSize;
+
+      cell.element.style.background = `url(${urlBg})`;
+      cell.element.style.backgroundSize = "400px";
+      cell.element.style.backgroundPosition = `left -${bgLeft}px top -${bgTop}px`;
+    }
   };
 
   cells.push(empty);
@@ -215,9 +234,8 @@ buttonSound.addEventListener ('click', () => {
   } else {
     buttonSound.innerHTML = `<i class="material-icons">music_off</i>`;;
   }
-})
+});
 
-window.addEventListener('DOMContentLoaded', createField);
 buttonRestart.addEventListener('click', () => {
   buttonRestart.innerText = 'Restart';
   field.textContent = '';
@@ -226,4 +244,6 @@ buttonRestart.addEventListener('click', () => {
   moves.innerHTML = `Moves: ${moveCount}`;
   startNewGame();
 });
+
+window.addEventListener('DOMContentLoaded', createField);
 
