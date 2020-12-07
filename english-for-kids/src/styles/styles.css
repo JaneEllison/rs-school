@@ -17,6 +17,21 @@
 .navigation {
   position: relative;
 }
+.start__game_btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: rgb(17, 100, 0);
+  width: 20%;
+  height: 30px;
+  background: #4ee98e;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 70%;
+}
+.start__game_btn.game__mode{
+  display: flex;
+}
 .button__toggle_menu {
   display: block;
   width: 28px;
@@ -24,7 +39,6 @@
   position: absolute;
   top: -10px;
   z-index: 3;
-
 }
 .button__toggle_menu span:after, .button__toggle_menu span:before {
   content: "";
@@ -72,6 +86,9 @@
   transition: left 0.7s;
   z-index: 2;
 }
+.navigation__menu.game__mode{
+  background-color:#6dd398;
+}
 .navigation__menu.visible {
   left: calc(500px - 50vw);
 }
@@ -83,6 +100,9 @@
 }
 .switch__input{
   display: none;
+}
+.switch__container {
+  margin-top: 4px;
 }
 .switch{
   cursor: pointer;
@@ -201,6 +221,9 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   box-shadow: 0 14px 40px #fcd8a1be, 0 10px 10px #f8d195be;;
   cursor: pointer;
 }
+.card__container.game__mode:hover {
+  box-shadow: 0 14px 40px #c2fca1be, 0 10px 10px #7cff40be;;
+}
 .front__card {
   position: absolute;
   left: 0;
@@ -277,4 +300,11 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
 .creators__icon:last-child {
   width: 100px;
   height: 50px;
+}
+
+@media (max-width: 600px) {
+  .start__game_btn {
+    width: 40%;
+    margin-left: 20%;
+  }
 }

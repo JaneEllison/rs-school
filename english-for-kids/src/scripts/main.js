@@ -2,15 +2,6 @@
 // import DATA from '@/scripts/cards.js';
 // import CATEGORIES from '@/scripts/cards.js';
 
-(function () {
-  function initRouter() {
-    var router = new Router([
-      new Route('mainpage', 'main_page.html', true),            
-    ]);
-  }
-  initRouter();
-}());
-
 const container = document.querySelector ('.main__container');
 let HASH = window.location.hash.substr(1);
 
@@ -64,7 +55,9 @@ const buildCard = (item) => {
   cardTitleRu.innerText = item.translation;
 
   cardContainer.addEventListener ('click', ()=> {
-    playAydio(`./${item.audioSrc}`);
+    if(!isGameModePlay) {
+      playAydio(`./${item.audioSrc}`);
+    }
   });
 
   rotateCardBtn.addEventListener ('click', () => {
@@ -109,25 +102,87 @@ const init = () => {
 };
 
 //game mode
-let switchInput = document.querySelector ('.switch__input');
-let gameModeTrain = document.querySelector ('.play');
-let gameModePlay = document.querySelector ('.train');
-let startGame = false;
+const switchInput = document.querySelector ('.switch__input');
+const gameModeTrain = document.querySelector ('.play');
+const gameModePlay = document.querySelector ('.train');
+const switchContainer = document.querySelector ('.switch__container')
+let isGameModePlay;
 
 switchInput.addEventListener ('click', () =>{
-  if (!startGame) {
+  if (!isGameModePlay) {
     gameModeTrain.classList.add ('hide');
     gameModePlay.classList.remove ('hide');
-    startGame = true;
-    // changeMode();
+    isGameModePlay = true;
   } else {
     gameModeTrain.classList.remove ('hide');
     gameModePlay.classList.add ('hide');
-    startGame = false;
-     // changeMode();
+    isGameModePlay = false;
   }
+
+  changeMode(isGameModePlay);
 });
 
+//add Start game button
+const startGameBtn = document.createElement('div');
+startGameBtn.className = 'start__game_btn';
+startGameBtn.innerText = 'START GAME';
+switchContainer.before(startGameBtn);
+
+//change Mode
+const changeMode = (modePlay) => {
+  const categoriesBg = document.querySelectorAll('.categories__bg');
+  const navigationMenu = document.querySelector('.navigation__menu');
+  const rotateCardBtn = document.querySelectorAll('.rotate_card');
+  const cardHeaderEn = document.querySelectorAll('.card__header_en');
+  const cardImg = document.querySelectorAll('.card__img');
+  const cardContainer = document.querySelectorAll('.card__container');
+  const startGameBtn = document.querySelector('.start__game_btn');  
+
+  if (modePlay) { 
+    startGameBtn.classList.add ('game__mode');
+    
+    categoriesBg.forEach(cardBg => {
+      cardBg.style.background = "linear-gradient(180deg,#31b869,#8fe2b1 40%)";
+    });
+    navigationMenu.classList.add ('game__mode');
+
+    cardContainer.forEach(card => {
+      card.classList.add ('game__mode');
+    });
+    rotateCardBtn.forEach(button => {
+      button.style.display = "none";
+    });
+    cardHeaderEn.forEach(text => {
+      text.style.display = "none";
+    });
+    cardImg.forEach(img => {
+      img.style.height = "90%";
+    });
+  } else {
+    startGameBtn.classList.remove ('game__mode');
+
+    categoriesBg.forEach(cardBg => {
+      cardBg.style.background = "linear-gradient(180deg, rgb(255, 197, 72),#dfff85 40%)";
+    });
+    navigationMenu.classList.remove ('game__mode');
+
+    cardContainer.forEach(card => {
+      card.classList.remove ('game__mode');
+    });
+    rotateCardBtn.forEach(button => {
+      button.style.display = "flex";
+    });
+    cardHeaderEn.forEach(text => {
+      text.style.display = "block";
+    });
+    cardImg.forEach(img => {
+      img.style.height = "80%";
+    });
+  }
+}
+
+
+//add audio
 let audio;
 function playAydio(url) {
   if(!audio) audio = new Audio(); 
@@ -141,5 +196,14 @@ window.addEventListener('hashchange', () => {
   container.innerHTML = '';
   getHash();
   init();
+  changeMode(isGameModePlay);
 });
 
+(function () {
+  function initRouter() {
+    var router = new Router([
+      new Route('mainpage', 'main_page.html', true),          
+    ]);
+  }
+  initRouter();
+}());
