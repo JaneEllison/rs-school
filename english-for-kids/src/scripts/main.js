@@ -2,6 +2,15 @@
 // import DATA from '@/scripts/cards.js';
 // import CATEGORIES from '@/scripts/cards.js';
 
+(function () {
+  function initRouter() {
+    var router = new Router([
+      new Route('mainpage', 'main_page.html', true),          
+    ]);
+  }
+  initRouter();
+}());
+
 const container = document.querySelector ('.main__container');
 let HASH = window.location.hash.substr(1);
 
@@ -15,14 +24,13 @@ const menu = document.querySelector ('.navigation__menu');
 const closeMenu = () => {
   document.onclick = function (e) {
     if(e.target !== menu && e.target !== menuBtn) {
-      console.log('неправильно работает закрытие меню');
       menu.classList.remove('visible');
       menuBtn.classList.remove('on');
     }
   };
 };
 
-menuBtn.addEventListener ('click', (e) =>{
+menuBtn.addEventListener ('click', () =>{
   menuBtn.classList.toggle ('on');
   menu.classList.toggle ('visible');
   closeMenu();
@@ -54,8 +62,8 @@ const buildCard = (item) => {
   cardImageBack.innerHTML = `<img src="${item.image}" class="card__img">`;
   cardTitleRu.innerText = item.translation;
 
-  cardContainer.addEventListener ('click', ()=> {
-    if(!isGameModePlay) {
+  cardContainer.addEventListener ('click', (event)=> {
+    if(!isGameModePlay && event.target !== rotateCardBtn) {
       playAydio(`./${item.audioSrc}`);
     }
   });
@@ -130,7 +138,6 @@ switchContainer.before(startGameBtn);
 
 //change Mode
 const changeMode = (modePlay) => {
-  const categoriesBg = document.querySelectorAll('.categories__bg');
   const navigationMenu = document.querySelector('.navigation__menu');
   const rotateCardBtn = document.querySelectorAll('.rotate_card');
   const cardHeaderEn = document.querySelectorAll('.card__header_en');
@@ -141,11 +148,7 @@ const changeMode = (modePlay) => {
   if (modePlay) { 
     startGameBtn.classList.add ('game__mode');
     
-    categoriesBg.forEach(cardBg => {
-      cardBg.style.background = "linear-gradient(180deg,#31b869,#8fe2b1 40%)";
-    });
-    navigationMenu.classList.add ('game__mode');
-
+    navigationMenu.classList.add ('game__mode')
     cardContainer.forEach(card => {
       card.classList.add ('game__mode');
     });
@@ -161,11 +164,7 @@ const changeMode = (modePlay) => {
   } else {
     startGameBtn.classList.remove ('game__mode');
 
-    categoriesBg.forEach(cardBg => {
-      cardBg.style.background = "linear-gradient(180deg, rgb(255, 197, 72),#dfff85 40%)";
-    });
-    navigationMenu.classList.remove ('game__mode');
-
+    navigationMenu.classList.remove ('game__mode')
     cardContainer.forEach(card => {
       card.classList.remove ('game__mode');
     });
@@ -180,7 +179,6 @@ const changeMode = (modePlay) => {
     });
   }
 }
-
 
 //add audio
 let audio;
@@ -199,11 +197,4 @@ window.addEventListener('hashchange', () => {
   changeMode(isGameModePlay);
 });
 
-(function () {
-  function initRouter() {
-    var router = new Router([
-      new Route('mainpage', 'main_page.html', true),          
-    ]);
-  }
-  initRouter();
-}());
+
