@@ -2,6 +2,7 @@
 *{
   box-sizing: border-box;
   margin: 0;
+  font-family: sans-serif;
 }
 .header__container {
   height: 45px;
@@ -121,6 +122,21 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   transform: translateX(70px);
   box-shadow: -2px 0px 4px 0px rgba(0,0,0,0.2);
 }
+.train {
+  position: absolute;
+  top: 7px;
+  left: 17px;
+  color: rgb(17, 100, 0);
+}
+.play {
+  position: absolute;
+  top: 7px;
+  left: 65px;
+  color: rgb(100, 57, 0);
+}
+.game__mode.hide {
+  display: none;
+}
 .main__container {
   max-width: 1000px;
   margin: 0 auto;
@@ -176,32 +192,33 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   margin-bottom: 10px;
   margin-top: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .card__discr {
+  position: relative;
   height: 100%;
+  width: 100%;
 }
 .card__container:hover {
   box-shadow: 0 14px 40px #fcd8a1be, 0 10px 10px #f8d195be;;
   cursor: pointer;
 }
 .front__card {
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 100%;
+  transition: 1s;
+  backface-visibility: hidden;
+}
+.back__card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
 }
 .img_block{
   width: 100%;
@@ -214,7 +231,7 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
 .card__img {
   height: 75%;
 }
-.card__header_en {
+.card__header_en, .card__header_ru {
   padding: 5px;
   position: absolute;
   width: 100%;
@@ -234,9 +251,6 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   height: 40px;
   width: 40px;
   z-index: 3;
-}
-.back__card.hide {
-  display: none;
 }
 .footer__conainer {
   background-color: rgb(241, 253, 189);

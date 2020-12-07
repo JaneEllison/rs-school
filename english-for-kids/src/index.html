@@ -19,7 +19,7 @@
             <div class="button__toggle_menu"><span></span></div>
           </div>
           <ul class="navigation__menu">
-            <a href="" class="navigation__link">Main page</a>
+            <a href="#mainpage" class="navigation__link">Main page</a>
             <a href="#Family" class="navigation__link">Family</a>
             <a href="#Animals" class="navigation__link">Animals</a>
             <a href="#Fruits" class="navigation__link">Fruits</a>
@@ -35,84 +35,15 @@
           <label class="switch">
             <input type="checkbox" class="switch__input">
             <div class="switch__label" data-on="Train" data-off="Play">
-                <div class="switch__handle"></div>
+              <div class="switch__handle"></div>
+              <div class="game__mode play">PLAY</div>
+              <div class="game__mode hide train">TRAIN</div>
             </div>
           </label>
         </div>
       </div>
       <div class="main__container" id = 'container'>
-        <div class="card__container">
-          <a href="#Family" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/family.png" class="categories__image" alt="Family">
-            </div>
-            <span class="categories__title">Family</span>
-          </a>
-        </div>
-        <div class="card__container">
-          <a href="#Animals" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/animals.png" class="categories__image" alt="Animals">
-            </div>
-            <span class="categories__title">Animals</span>
-          </a>
-        </div>
-        <div class="card__container">
-          <a href="#Fruits" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/fruits.png" class="categories__image" alt="Fruits">
-            </div>
-            <span class="categories__title">Fruits</span>
-          </a>
-        </div>
-        <div class="card__container">
-          <a href="#Vegetables" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/vegetables.png" class="categories__image" alt="Vegetables">
-            </div>
-            <span class="categories__title">Vegetables</span>
-          </a>
-        </div>
-        <div class="card__container">
-          <a href="#Berries" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/berries.png" class="categories__image" alt="Berries">
-            </div>
-            <span class="categories__title">Berries</span>
-          </a>
-        </div>
-        <div class="card__container">
-          <a href="#Clothes" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/clothes.png" class="categories__image" alt="Clothes">
-            </div>
-            <span class="categories__title">Clothes</span>
-          </a>
-        </div>
-        <div class="card__container">
-          <a href="#Body" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/humanbody.png" class="categories__image" alt="Body">
-            </div>
-            <span class="categories__title">Body</span>
-          </a>
-        </div>
-        <div class="card__container">
-          <a href="#Transport" class="categories__link">
-            <div class="categories__bg"></div>
-            <div class="categories__img">
-              <img src="assets/img_categories/transport.png" class="categories__image" alt="Transport">
-            </div>
-            <span class="categories__title">Transport</span>
-          </a>
-        </div>
+        
       </div>
       <div class="footer__conainer">
         <div class="footer__info">
@@ -131,6 +62,7 @@
 
   <script src="./scripts/route.js"></script>
   <script src="./scripts/router.js"></script>
+  <script src="./scripts/cards.js"></script>
   <script src="./scripts/main.js"></script>
 
 </body>

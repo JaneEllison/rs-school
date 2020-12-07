@@ -1,8 +1,7 @@
 const CATEGORIES = ['Family', 'Animals', 'Fruits', 'Vegetables', 'Berries', 'Clothes', 'Human body', 'Transport'];
 
 const DATA = [ 
-  [
-    {
+      {
       word: 'boy',
       translation: 'мальчик',
       image: 'assets/img_family/boy.png',
@@ -57,9 +56,8 @@ const DATA = [
       image: 'assets/img_family/granny.jpg',
       audioSrc: 'assets/audio/grandmother.mp3',
       category: 'Family'
-    }
-  ],
-  [
+    },
+  
     {
       word: 'cat',
       translation: 'кот',
@@ -115,9 +113,7 @@ const DATA = [
       image: 'assets/img_animals/rabbit.png',
       audioSrc: 'assets/audio/rabbit.mp3',
       category: 'Animals'
-    }
-  ],
-  [
+    },
     {
       word: 'apple',
       translation: 'яблоко',
@@ -169,13 +165,11 @@ const DATA = [
     },
     {
       word: 'pineapple',
-      translation: 'заяц',
+      translation: 'ананас',
       image: 'assets/img_fruits/pineapple.png',
       audioSrc: 'assets/audio/pineapple.mp3',
       category: 'Fruits'
-    }
-  ],
-  [
+    },
     {
       word: 'cabbage',
       translation: 'капуста',
@@ -231,9 +225,7 @@ const DATA = [
       image: 'assets/img_vegetables/tomato.png',
       audioSrc: 'assets/audio/tomato.mp3',
       category: 'Vegetables'
-    }
-  ],  
-  [
+    },
     {
       word: 'blackberry',
       translation: 'ежевика',
@@ -250,7 +242,7 @@ const DATA = [
     },
     {
       word: 'cherry',
-      translation: 'слон',
+      translation: 'вишня',
       image: 'assets/img_berries/cherry.png',
       audioSrc: 'assets/audio/cherry.mp3',
       category: 'Berries'
@@ -289,9 +281,7 @@ const DATA = [
       image: 'assets/img_berries/strawberry.png',
       audioSrc: 'assets/audio/strawberry.mp3',
       category: 'Berries'
-    }
-  ],  
-  [
+    },
     {
       word: 'dress',
       translation: 'платье',
@@ -344,128 +334,114 @@ const DATA = [
     {
       word: 'vest',
       translation: 'жилет',
-      image: 'assets/img_clothes/rabbit.png',
-      audioSrc: 'assets/audio/rabbit.mp3',
+      image: 'assets/img_clothes/vest.png',
+      audioSrc: 'assets/audio/vest.mp3',
       category: 'Clothes'
-    }
-  ],  
-  [
+    },
     {
       word: 'ear',
       translation: 'ухо',
       image: 'assets/img_humanbody/ear.png',
       audioSrc: 'assets/audio/ear.mp3',
-      category: 'Human body'
+      category: 'Body'
     },
     {
       word: 'eye',
       translation: 'глаз',
       image: 'assets/img_humanbody/eye.png',
       audioSrc: 'assets/audio/eye.mp3',
-      category: 'Human body'
+      category: 'Body'
     },
     {
       word: 'finger',
       translation: 'палец',
       image: 'assets/img_humanbody/finger.png',
       audioSrc: 'assets/audio/finger.mp3',
-      category: 'Human body'
+      category: 'Body'
     },
     {
       word: 'foot',
       translation: 'стопа',
       image: 'assets/img_humanbody/foot.png',
       audioSrc: 'assets/audio/foot.mp3',
-      category: 'Human body'
+      category: 'Body'
     },
     {
       word: 'hand',
       translation: 'рука',
       image: 'assets/img_humanbody/hand.png',
       audioSrc: 'assets/audio/hand.mp3',
-      category: 'Human body'
+      category: 'Body'
     },
     {
       word: 'head',
       translation: 'голова',
       image: 'assets/img_humanbody/head.png',
       audioSrc: 'assets/audio/head.mp3',
-      category: 'Human body'
+      category: 'Body'
     },
     {
       word: 'legs',
       translation: 'нога',
       image: 'assets/img_humanbody/legs.png',
       audioSrc: 'assets/audio/legs.mp3',
-      category: 'Human body'
+      category: 'Body'
     },
     {
       word: 'nose',
       translation: 'нос',
       image: 'assets/img_humanbody/nose.png',
       audioSrc: 'assets/audio/nose.mp3',
-      category: 'Human body'
-    }
-  ],  
-  [
+      category: 'Body'
+    },
     {
       word: 'bicycle',
-      translation: 'кот',
+      translation: 'велосипед',
       image: 'assets/img_transport/bicycle.png',
       audioSrc: 'assets/audio/bicycle.mp3',
       category: 'Transport'
     },
     {
       word: 'car',
-      translation: 'собака',
+      translation: 'машина',
       image: 'assets/img_transport/car.png',
       audioSrc: 'assets/audio/car.mp3',
       category: 'Transport'
     },
     {
       word: 'kick scooter',
-      translation: 'слон',
+      translation: 'самокат',
       image: 'assets/img_transport/kickscooter.png',
-      audioSrc: 'assets/audio/kickscooter.mp3',
+      audioSrc: 'assets/audio/scooter.mp3',
       category: 'Transport'
     },
     {
       word: 'motorcycle',
-      translation: 'лиса',
+      translation: 'мотоцикл',
       image: 'assets/img_transport/motorcycle.png',
       audioSrc: 'assets/audio/motorcycle.mp3',
       category: 'Transport'
     },
     {
       word: 'plane',
-      translation: 'мышка',
+      translation: 'самолет',
       image: 'assets/img_transport/plane.png',
       audioSrc: 'assets/audio/plane.mp3',
       category: 'Transport'
     },
     {
       word: 'ship',
-      translation: 'осьминог',
+      translation: 'лодка',
       image: 'assets/img_transport/ship.png',
       audioSrc: 'assets/audio/ship.mp3',
       category: 'Transport'
     },
     {
       word: 'tractor',
-      translation: 'попугай',
+      translation: 'трактор',
       image: 'assets/img_transport/tractor.png',
       audioSrc: 'assets/audio/tractor.mp3',
       category: 'Transport'
     },
-    {
-      word: 'train',
-      translation: 'заяц',
-      image: 'assets/img_transport/train.png',
-      audioSrc: 'assets/audio/train.mp3',
-      category: 'Transport'
-    }
-  ],
 ];
 
-export default DATA;
-export default CATEGORIES;
