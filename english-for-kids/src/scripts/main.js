@@ -3,8 +3,6 @@ import DATA from '@/scripts/cards.js';
 import Route from '@/scripts/route.js';
 import Router from '@/scripts/router.js';
 
-alert ('Здравствуй, уважаемый проверяющий. Я немного не уложилась по времени и хотела бы попросить проверить мою работу ближе к пятнице. Большое спасибо за понимание. ')
-
 (function () {
   function initRouter() {
     var router = new Router([
@@ -109,6 +107,53 @@ const init = () => {
     return cardsData.map(item => buildCard(item));
   };
 
+  //get random audio 
+  let countClick = 0;
+
+  const getRandomAudio = (data, hash) => {
+    let cardsCategory = data.filter(item => item.category === hash);
+    let arrAudio = [];
+
+    cardsCategory.forEach(audio => {
+      return arrAudio.push(audio.audioSrc);
+    });
+
+    let randomArrAudio = [...arrAudio];
+
+
+      for(let i = 0; i<8; i++) {
+
+        for (let j = randomArrAudio.length; j>0; j--){
+          let randomInd = [Math.floor(Math.random() * j)];
+          const randomElement = randomArrAudio.splice(randomInd, 1)[0];
+          randomArrAudio.push(randomElement);
+        }
+      }
+    return randomArrAudio;
+  };
+
+  const randomAudios = getRandomAudio(cards.data, HASH);
+
+  const startGame = () => {
+    playAydio(randomAudios[countClick]);      
+    console.log(randomAudios);
+  };
+  
+
+  const startGameBtn = document.querySelector ('.start__game_btn');
+  
+  startGameBtn.addEventListener ('click', ()=> {
+    startGame();
+    startGameBtn.innerText = 'REPEAT';
+    if(startGameBtn.innerText === 'REPEAT'){
+      playAydio(randomAudios[countClick]);     
+    }
+    
+    if(!isGameModePlay) {
+      startGameBtn.innerText = 'START';
+    }
+  });
+
   craeteCards();
 };
 
@@ -199,5 +244,7 @@ window.addEventListener('hashchange', () => {
   init();
   changeMode(isGameModePlay);
 });
+
+
 
 
