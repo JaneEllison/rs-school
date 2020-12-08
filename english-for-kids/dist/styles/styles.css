@@ -1,0 +1,328 @@
+body{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+}
+.header_container {
+  height: 45px;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.navigation {
+  position: relative;
+}
+.start_game_btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: rgb(17, 100, 0);
+  width: 20%;
+  height: 30px;
+  background: #4ee98e;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 70%;
+}
+.start_game_btn.game_mode{
+  display: flex;
+}
+.button_toggle_menu {
+  display: block;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: -10px;
+  z-index: 3;
+}
+.button_toggle_menu span:after, .button_toggle_menu span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+}
+.button_toggle_menu span:after {
+  top: 18px;
+}
+.button_toggle_menu span {
+  position: relative;
+  display: block;
+}
+.button_toggle_menu span, .button_toggle_menu span:after, .button_toggle_menu span:before {
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transition: all .3s;
+  backface-visibility: hidden;
+  border-radius: 2px;
+}
+.button_toggle_menu.on span {
+  background-color: transparent;
+}
+.button_toggle_menu.on span:before {
+  transform: rotate(45deg) translate(-1px, 0);
+}
+.button_toggle_menu.on span:after {
+  transform: rotate(-45deg) translate(6px, -7px);
+}
+.navigation_menu {
+  display: flex;
+  background-color: rgb(241, 253, 189);
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: -1000px;
+  margin: -50px;
+  padding: 80px 30px 50px 30px;
+  width: 300px;
+  min-height: 100vh;
+  transition: left 0.7s;
+  z-index: 2;
+}
+.navigation_menu.game_mode{
+  background-color:#6dd398;
+}
+.navigation_menu.visible {
+  left: calc(500px - 50vw);
+}
+.navigation_link {
+  font-size: 25px;
+  margin-top: 10px;
+  color: #000;
+  text-decoration: none;
+}
+.switch_input{
+  display: none;
+}
+.switch_container {
+  margin-top: 4px;
+}
+.switch{
+  cursor: pointer;
+  transform: scale(1);
+  display: block;
+  width: 80px;
+}
+.switch_label{
+  display: inline-block; 
+  position: relative;
+  width: 120px; 
+  height: 30px; 
+  background: #ffbb54;
+  border-radius: 20px;
+}
+.switch_handle{
+  display: inline-block; 
+  position: absolute;
+  width: 50px; 
+  height: 50px; 
+  background: #db9327;
+  border-radius: 50%;
+  top: -10px;
+  box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.25);
+}
+.switch_handle{
+  transform: translateX(0px);
+}
+.switch_label, .switch_handle{
+  transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+input[type="checkbox"].switch_input:checked + .switch_label{
+  background: #4ee98e;
+}
+input[type="checkbox"].switch_input:checked + .switch_label .switch_handle{
+  background: #31b869;
+  transform: translateX(70px);
+  box-shadow: -2px 0px 4px 0px rgba(0,0,0,0.2);
+}
+.train {
+  position: absolute;
+  top: 7px;
+  left: 17px;
+  color: rgb(17, 100, 0);
+}
+.play {
+  position: absolute;
+  top: 7px;
+  left: 65px;
+  color: rgb(100, 57, 0);
+}
+.game_mode.hide {
+  display: none;
+}
+.main_container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  margin-top: 45px;
+  margin-bottom: 40px;
+  padding-top: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 20px;
+  column-gap: 25px;
+}
+.card_container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 250px;
+}
+
+.categories_link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+.categories_bg {
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(180deg,rgb(217, 255, 128),rgb(253, 249, 189));
+}
+.categories_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -60px;
+  background-color: #fff;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 15px solid #fff;
+  margin-bottom: -13px;
+}
+.categories_image{
+  height: 100%;
+}
+.categories_title{
+  color: rgb(100, 57, 0);
+  font-size: 22px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.card_discr {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.card_container:hover {
+  box-shadow: 0 14px 40px #fcd8a1be, 0 10px 10px #f8d195be;;
+  cursor: pointer;
+}
+.card_container.game_mode:hover {
+  box-shadow: 0 14px 40px #c2fca1be, 0 10px 10px #7cff40be;;
+}
+.front_card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  backface-visibility: hidden;
+}
+.back_card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+.img_block{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.card_img {
+  height: 75%;
+}
+.card_header_en, .card_header_ru {
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 215px;
+  left: 0;
+  background-color: #ffcb7cbe;
+  color: rgb(100, 57, 0);
+  font-size: 22px;
+}
+.rotate_card {
+  position: absolute;
+  top: 214px;
+  left: 260px;
+  background-image: url(../assets/rotate-icon.png);
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+  z-index: 3;
+}
+.footer_conainer {
+  background-color: rgb(241, 253, 189);
+  margin: 0 auto;
+}
+.footer_info {
+  padding: 5px 0;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+.creators_info {
+  color: #000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.creators_icon {
+  width: 50px;
+  height: 50px;
+}
+.creators_icon:last-child {
+  width: 100px;
+  height: 50px;
+}
+
+@media (max-width: 900px) {
+  .navigation_menu {
+    width: 600px;
+    height: 100vh;
+  }
+  .navigation_menu.visible{
+    left: calc(150px - 20vw);
+  }
+}
+@media (max-width: 600px) {
+  .navigation_menu {
+    width: 600px;
+    height: 100vh;
+  }
+  .navigation_menu.visible{
+    left: 1vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .start_game_btn {
+    width: 40%;
+    margin-left: 20%;
+  }
+}
