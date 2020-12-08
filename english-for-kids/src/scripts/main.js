@@ -1,11 +1,14 @@
-// import '@/styles/styles.css'
-// import DATA from '@/scripts/cards.js';
-// import CATEGORIES from '@/scripts/cards.js';
+import '@/styles/styles.css';
+import DATA from '@/scripts/cards.js';
+import Route from '@/scripts/route.js';
+import Router from '@/scripts/router.js';
+
+alert ('Здравствуй, уважаемый проверяющий. Я немного не уложилась по времени и хотела бы попросить проверить мою работу ближе к пятнице. Большое спасибо за понимание. ')
 
 (function () {
   function initRouter() {
     var router = new Router([
-      new Route('mainpage', 'main_page.html', true),          
+      new Route('mainpage', 'pages/main_page.html', true),          
     ]);
   }
   initRouter();
@@ -50,10 +53,10 @@ const buildCard = (item) => {
   cardContainer.className = 'card__container';
   card.className = 'card__discr';
   frontCard.className = 'front__card';
-  cardImageFront.className = 'img_block';
-  cardImageBack.className = 'img_block';
+  cardImageFront.className = 'img__block';
+  cardImageBack.className = 'img__block';
   cardTitleEn.className = 'card__header_en';
-  rotateCardBtn.className = 'rotate_card';
+  rotateCardBtn.className = 'rotate__card';
   backCard.className = 'back__card';
   cardTitleRu.className = 'card__header_ru';
 
@@ -64,7 +67,7 @@ const buildCard = (item) => {
 
   cardContainer.addEventListener ('click', (event)=> {
     if(!isGameModePlay && event.target !== rotateCardBtn) {
-      playAydio(`./${item.audioSrc}`);
+      playAydio(`${item.audioSrc}`);
     }
   });
 
@@ -139,7 +142,7 @@ switchContainer.before(startGameBtn);
 //change Mode
 const changeMode = (modePlay) => {
   const navigationMenu = document.querySelector('.navigation__menu');
-  const rotateCardBtn = document.querySelectorAll('.rotate_card');
+  const rotateCardBtn = document.querySelectorAll('.rotate__card');
   const cardHeaderEn = document.querySelectorAll('.card__header_en');
   const cardImg = document.querySelectorAll('.card__img');
   const cardContainer = document.querySelectorAll('.card__container');

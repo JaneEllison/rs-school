@@ -1,5 +1,3 @@
-const CATEGORIES = ['Family', 'Animals', 'Fruits', 'Vegetables', 'Berries', 'Clothes', 'Human body', 'Transport'];
-
 const DATA = [ 
       {
       word: 'boy',
@@ -444,4 +442,7 @@ const DATA = [
       category: 'Transport'
     },
 ];
+
+export default DATA;
+
 

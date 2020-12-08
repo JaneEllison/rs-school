@@ -1,3 +1,5 @@
+export default Router;
+
 function Router(routes) {
   try {
     if (!routes) {

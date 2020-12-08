@@ -1,4 +1,3 @@
-/* @import "~normalize.css"; */
 *{
   box-sizing: border-box;
   margin: 0;
@@ -243,7 +242,7 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   transform: rotateY(180deg);
   backface-visibility: hidden;
 }
-.img_block{
+.img__block{
   width: 100%;
   height: 100%;
   display: flex;
@@ -265,7 +264,7 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   color: rgb(100, 57, 0);
   font-size: 22px;
 }
-.rotate_card {
+.rotate__card {
   position: absolute;
   top: 214px;
   left: 260px;
@@ -326,5 +325,4 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
     width: 40%;
     margin-left: 20%;
   }
-
 }

@@ -1,3 +1,5 @@
+export default Route;
+
 function Route(name, htmlName, defaultRoute) {
   try {
     if(!name || !htmlName) {

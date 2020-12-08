@@ -5,9 +5,20 @@ const CopyWebpackPlugin = require ('copy-webpack-plugin')
 const MiniCssExtractPlugin = require ('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require ('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require ('terser-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
+
+const getDevToolOptions = () => {
+  const options = {};
+
+  if (isDev){
+    options.devtool = 'source-map';
+  }
+
+  return options;
+}
 
 const optimization = () => {
   const config = {
@@ -62,7 +73,9 @@ module.exports = {
     path: path.resolve (__dirname, 'dist')
   },
   optimization: optimization(),
-  devtool: (isDev) ? 'source-map' : '',
+
+  ...getDevToolOptions(),
+
   plugins: [
     new HTMLWebpackPlugin( {
       template: './index.html',
@@ -76,7 +89,9 @@ module.exports = {
         {from: path.resolve(__dirname, 'src/assets/favicon.ico'),
         to: path.resolve(__dirname, 'dist/assets/favicon.ico')},
         {from: path.resolve(__dirname, 'src/assets/'),
-        to: path.resolve(__dirname, 'dist/assets/')}
+        to: path.resolve(__dirname, 'dist/assets/')},
+        {from: path.resolve(__dirname, 'src/pages/'),
+        to: path.resolve(__dirname, 'dist/pages/')}
       ]
       }
     ),
@@ -87,6 +102,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: ['babel-loader'],
+        exclude: [
+          /node_modules/
+        ]
+      },
+      {
         test: /\.css$/,
         use: cssLoaders()
       },
@@ -95,7 +117,7 @@ module.exports = {
         use: cssLoaders('sass-loader')
       },
       {
-        test: /\.{png|jpg|svg|gif|ico}$/,
+        test: /\.(png|jpg|svg|gif|ico)$/,
         use: ['file-loader']
       }
     ]
