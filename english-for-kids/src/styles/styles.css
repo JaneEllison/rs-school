@@ -16,7 +16,7 @@
 .navigation {
   position: relative;
 }
-.start__game_btn {
+.start__game_btn, .repeat__word_btn {
   display: none;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@
   cursor: pointer;
   margin-left: 70%;
 }
-.start__game_btn.game__mode{
+.start__game_btn.game__mode, .repeat__word_btn.game__mode{
   display: flex;
 }
 .button__toggle_menu {

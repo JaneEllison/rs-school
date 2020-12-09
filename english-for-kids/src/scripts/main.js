@@ -129,27 +129,20 @@ const init = () => {
     return randomArrAudio;
   };
 
-  const randomAudios = getRandomAudio(cards.data, HASH);
-
-  const startGame = () => {
-    playAydio(randomAudios[countClick]);
-  };
-
   const startGameBtn = document.querySelector('.start__game_btn');
 
   startGameBtn.addEventListener('click', () => {
-    startGame();
+    let randomAudios = getRandomAudio(cards.data, HASH);
+
+    playAydio(randomAudios[countClick]);
 
     startGameBtn.classList.remove('game__mode');
-    repeatWordBtn.classList.add ('game__mode');
+    repeatWordBtn.classList.add('game__mode');
 
-    repeatWordBtn.addEventListener('click', ()=> {
+    repeatWordBtn.addEventListener('click', () => {
       playAydio(randomAudios[countClick]);
-    })
-
-    isGameStarted = true;
+    });
   });
-
   craeteCards();
 }; 
 
@@ -161,7 +154,6 @@ const switchContainer = document.querySelector('.switch__container');
 let isGameModePlay;
 
 switchInput.addEventListener('click', () => {
-  isGameStarted = false;
 
   if (!isGameModePlay) {
     gameModeTrain.classList.add('hide');
@@ -198,7 +190,10 @@ const changeMode = modePlay => {
   const startGameBtn = document.querySelector('.start__game_btn');
 
   if (modePlay) {
-    startGameBtn.classList.add('game__mode');
+    if(HASH !== 'mainpage'){
+      startGameBtn.classList.add('game__mode');
+    }
+    console.log(HASH);
     navigationMenu.classList.add('game__mode');
 
     cardContainer.forEach(card => {
@@ -247,8 +242,9 @@ window.addEventListener('hashchange', () => {
   getHash();
   init();
   changeMode(isGameModePlay);
+  const repeatWordBtn = document.querySelector ('.repeat__word_btn')
+  repeatWordBtn.classList.remove('game__mode');
 });
-
 
 
 
