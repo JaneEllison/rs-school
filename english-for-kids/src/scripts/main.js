@@ -190,7 +190,7 @@ const changeMode = modePlay => {
   const startGameBtn = document.querySelector('.start__game_btn');
 
   if (modePlay) {
-    if(HASH !== 'mainpage'){
+    if(HASH !== 'mainpage' && HASH !== ""){
       startGameBtn.classList.add('game__mode');
     }
     console.log(HASH);
