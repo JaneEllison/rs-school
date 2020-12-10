@@ -143,37 +143,52 @@ const init = () => {
         checkCardCorrect(cardElemText, currentWord);
       });
     });
+    
+    const repeatWordBtn = document.querySelector ('.repeat__word_btn')
+    repeatWordBtn.addEventListener('click', () => {
+      currentCard = randomCardsArray[countClick];
+      currentWord = currentCard.word;
+      playAydio(currentCard.audioSrc);
+    });
+
+
+    const checkCardCorrect = (text, word) => {
+      if (text === word) {
+        playAydio('assets/audio/correct.mp3');
+
+        countClick = countClick + 1;
+        currentCard = randomCardsArray[countClick];
+        currentWord = currentCard.word;
+
+        let correctCard = event.target.closest('.card__container');
+
+        console.log(correctCard);
+        correctCard.classList.add('disable');
+
+        setTimeout(playAydio, 1000, currentCard.audioSrc);
+
+      } else {
+        playAydio('assets/audio/wrong.mp3');
+      }
+  
+      return countClick;
+    };
+
     return randomCardsArray;
   };
 
-  const checkCardCorrect = (cardElemText, currentWord) => {
-    if (cardElemText === currentWord) {
-      playAydio('assets/audio/correct.mp3');
-      countClick = countClick + 1;
-      console.log('yep');
-
-    } else {
-      playAydio('assets/audio/wrong.mp3');
-      console.log('nope');
-    }
-    return countClick;
-  };
-
   const startGameBtn = document.querySelector('.start__game_btn');
-  startGameBtn.addEventListener('click', () => {
 
+  startGameBtn.addEventListener('click', () => {
     let randomCards = getRandomCards(cards.data, HASH);
-    let randomCard = randomCards[countClick];  
+    let randomCard = randomCards[countClick];
 
     playAydio(randomCard.audioSrc);
-
+    
     startGameBtn.classList.remove('game__mode');
     repeatWordBtn.classList.add('game__mode');
-
-    repeatWordBtn.addEventListener('click', () => {
-      playAydio(randomCard.audioSrc);
-    });
   });
+  
   craeteCards();
 }; 
 

@@ -216,6 +216,11 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   height: 100%;
   width: 100%;
 }
+.card__container.disable{
+  pointer-events: none;
+  opacity: 0.5;
+  background: rgb(202, 255, 195);
+}
 .card__container:hover {
   box-shadow: 0 14px 40px #fcd8a1be, 0 10px 10px #f8d195be;;
   cursor: pointer;
