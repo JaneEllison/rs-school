@@ -5,11 +5,12 @@ import Router from '@/scripts/router.js';
 
 (function () {
   function initRouter() {
-    var router = new _scripts_router_js__WEBPACK_IMPORTED_MODULE_3__.default([new _scripts_route_js__WEBPACK_IMPORTED_MODULE_2__.default('mainpage', 'pages/main_page.html', true)]);
+    var router = new Router([
+      new Route('mainpage', 'pages/main_page.html', true),          
+    ]);
   }
-
   initRouter();
-})();
+}());
 
 const container = document.querySelector('.main__container');
 let HASH = window.location.hash.substr(1);
@@ -89,7 +90,7 @@ const switchInput = document.querySelector('.switch__input');
 const gameModeTrain = document.querySelector('.play');
 const gameModePlay = document.querySelector('.train');
 const switchContainer = document.querySelector('.switch__container');
-const mainContainer = document.querySelector('.main__container'); // let currentCards;
+const mainContainer = document.querySelector('.main__container'); 
 
 let countClick = 0;
 let isGameModePlay;
@@ -98,9 +99,6 @@ let isGameStarted;
 let randomCardsArray;
 let rightClick = 0;
 let wrongClick = 0;
-let isGameFinished;
-// let currentArr;
-// let randomCard;
 
 const getCards = (data, hash) => {
   return data.filter(item => item.category === hash);
@@ -226,7 +224,6 @@ const addMarks = isAnswerCorrect => {
     if (isAnswerCorrect) {
       mark.className = 'fa fa-star checked';
       if (rightClick === 8) {
-        isGameFinished = true;
         finishGame();
       }
     } else {
@@ -289,7 +286,6 @@ const init = () => {
   navigationLink.forEach (link => {
     let textLink = link.innerText
     let linkHash = textLink.replace(/\s/g, '');
-    console.log(linkHash, HASH);
     if (linkHash === HASH) {
       link.classList.add ('current')
     }
