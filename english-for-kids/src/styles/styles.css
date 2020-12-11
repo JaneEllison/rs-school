@@ -157,6 +157,7 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   display: none;
 }
 .main__container {
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 20px;
@@ -210,6 +211,21 @@ input[type="checkbox"].switch__input:checked + .switch__label .switch__handle{
   font-size: 22px;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+.mark__line_container{
+  display: none;
+  position: absolute;
+  top: -45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+};
+.mark__line_container.game__mode{
+  display: flex;
+}
+.checked {
+  color: orange;
 }
 .card__discr {
   position: relative;

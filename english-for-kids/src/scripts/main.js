@@ -5,39 +5,39 @@ import Router from '@/scripts/router.js';
 
 (function () {
   function initRouter() {
-    var router = new Router([
-      new Route('mainpage', 'pages/main_page.html', true),          
-    ]);
+    var router = new _scripts_router_js__WEBPACK_IMPORTED_MODULE_3__.default([new _scripts_route_js__WEBPACK_IMPORTED_MODULE_2__.default('mainpage', 'pages/main_page.html', true)]);
   }
-  initRouter();
-}());
 
-const container = document.querySelector ('.main__container');
+  initRouter();
+})();
+
+const container = document.querySelector('.main__container');
 let HASH = window.location.hash.substr(1);
 
 const getHash = () => {
   return HASH = window.location.hash.substr(1);
 };
 
-const menuBtn = document.querySelector ('.button__toggle_menu');
-const menu = document.querySelector ('.navigation__menu');
+const menuBtn = document.querySelector('.button__toggle_menu');
+const menu = document.querySelector('.navigation__menu');
 
 const closeMenu = () => {
   document.onclick = function (e) {
-    if(e.target !== menu && e.target !== menuBtn) {
+    if (e.target !== menu && e.target !== menuBtn) {
       menu.classList.remove('visible');
       menuBtn.classList.remove('on');
     }
   };
 };
 
-menuBtn.addEventListener ('click', () =>{
-  menuBtn.classList.toggle ('on');
-  menu.classList.toggle ('visible');
+menuBtn.addEventListener('click', () => {
+  menuBtn.classList.toggle('on');
+  menu.classList.toggle('visible');
   closeMenu();
 });
 
-const buildCard = (item) => {
+//build Cards
+const buildCard = item => {
   const cardContainer = document.createElement('div');
   const card = document.createElement('div');
   const frontCard = document.createElement('div');
@@ -63,185 +63,93 @@ const buildCard = (item) => {
   cardImageBack.innerHTML = `<img src="${item.image}" class="card__img">`;
   cardTitleRu.innerText = item.translation;
 
-  cardContainer.addEventListener ('click', (event)=> {
-    if(!isGameModePlay && event.target !== rotateCardBtn) {
-      playAydio(`${item.audioSrc}`);
+  cardContainer.addEventListener('click', event => {
+    if (!isGameModePlay && event.target !== rotateCardBtn) {
+      playAydio(item.audioSrc);
     }
   });
-
-  rotateCardBtn.addEventListener ('click', () => {
+  rotateCardBtn.addEventListener('click', () => {
     frontCard.style.transform = "rotateY(180deg)";
     backCard.style.transform = "rotateY(360deg)";
   });
-
-  cardContainer.addEventListener ('mouseleave', ()=> {
+  cardContainer.addEventListener('mouseleave', () => {
     frontCard.style.transform = "rotateY(0deg)";
     backCard.style.transform = "rotateY(180deg)";
   });
 
-  container.appendChild(cardContainer);
-  cardContainer.appendChild(card);
-  card.appendChild(frontCard);
-  frontCard.appendChild(cardImageFront);
-  frontCard.appendChild(cardTitleEn);
-  frontCard.appendChild(rotateCardBtn);
-  card.appendChild(backCard);
-  backCard.appendChild(cardImageBack);
-  backCard.appendChild(cardTitleRu);
+  container.append(cardContainer);
+  cardContainer.append(card);
+  card.append(frontCard);
+  frontCard.append(
+    cardImageFront,
+    cardTitleEn,
+    rotateCardBtn
+  );
+  card.append(backCard);
+  backCard.append(
+    cardImageBack,
+    cardTitleRu
+  );
 };
 
-const init = () => {
-  let hash = HASH;
-  const cards = {
-    data: DATA,
-    hash
-  };
-
-  const getCards = (data, hash) => {
-    return data.filter(item => item.category === hash);
-  };
-
-  const craeteCards = () => {
-    const cardsData = getCards(cards.data, HASH);
-    return cardsData.map(item => buildCard(item));
-  }; 
-  
-  //get random audio 
-  let countClick = 0;
-
-  const getRandomCards = (data, hash) => {
-    let cardsCategory = data.filter(item => item.category === hash);
-    let arrCards = [];
-
-    cardsCategory.forEach(cards => {
-      return arrCards.push(cards);
-    });
-
-    let randomCardsArray = [...arrCards];
-
-    for (let i = 0; i < 8; i++) {
-      for (let j = randomCardsArray.length; j > 0; j--) {
-        let randomInd = [Math.floor(Math.random() * j)];
-        const randomElement = randomCardsArray.splice(randomInd, 1)[0];
-        randomCardsArray.push(randomElement);
-      }
-    };
-
-    //check correct answer
-    let currentCard = randomCardsArray[countClick];
-    let currentWord = currentCard.word;
-    const cardDiscr = document.querySelectorAll('.card__discr');
-    
-    cardDiscr.forEach(card => {
-      card.addEventListener('click', event => {
-        let cardElemText;
-        console.log(countClick);
-
-        if (event.target.closest('.front__card') !== null) {
-          cardElemText = event.target.closest('.front__card').parentElement.firstElementChild.firstElementChild.nextElementSibling.innerHTML;
-        };
-        checkCardCorrect(cardElemText, currentWord);
-      });
-    });
-    
-    const repeatWordBtn = document.querySelector ('.repeat__word_btn')
-    repeatWordBtn.addEventListener('click', () => {
-      currentCard = randomCardsArray[countClick];
-      currentWord = currentCard.word;
-      playAydio(currentCard.audioSrc);
-    });
-
-
-    const checkCardCorrect = (text, word) => {
-      if (text === word) {
-        playAydio('assets/audio/correct.mp3');
-
-        countClick = countClick + 1;
-        currentCard = randomCardsArray[countClick];
-        currentWord = currentCard.word;
-
-        let correctCard = event.target.closest('.card__container');
-
-        console.log(correctCard);
-        correctCard.classList.add('disable');
-
-        setTimeout(playAydio, 1000, currentCard.audioSrc);
-
-      } else {
-        playAydio('assets/audio/wrong.mp3');
-      }
-  
-      return countClick;
-    };
-
-    return randomCardsArray;
-  };
-
-  const startGameBtn = document.querySelector('.start__game_btn');
-
-  startGameBtn.addEventListener('click', () => {
-    let randomCards = getRandomCards(cards.data, HASH);
-    let randomCard = randomCards[countClick];
-
-    playAydio(randomCard.audioSrc);
-    
-    startGameBtn.classList.remove('game__mode');
-    repeatWordBtn.classList.add('game__mode');
-  });
-  
-  craeteCards();
-}; 
-
-//game mode
 const switchInput = document.querySelector('.switch__input');
 const gameModeTrain = document.querySelector('.play');
 const gameModePlay = document.querySelector('.train');
 const switchContainer = document.querySelector('.switch__container');
+const mainContainer = document.querySelector('.main__container');
+
+// let currentCards;
+let countClick = 0;
 let isGameModePlay;
+let audio;
+// let isAnswerCorrect;
+// let isGameStarted;
+// let currentArr;
+// let randomCard;
 
-switchInput.addEventListener('click', () => {
+const getCards = (data, hash) => {
+  return data.filter(item => item.category === hash);
+};
 
-  if (!isGameModePlay) {
-    gameModeTrain.classList.add('hide');
-    gameModePlay.classList.remove('hide');
-    isGameModePlay = true;
-  } else {
-    gameModeTrain.classList.remove('hide');
-    gameModePlay.classList.add('hide');
-    repeatWordBtn.classList.remove('game__mode');
-    isGameModePlay = false;
-  }
+const craeteCards = (cards) => {
+  const cardsData = getCards(cards, HASH);
+  return cardsData.map(item => buildCard(item));
+}; 
 
-  changeMode(isGameModePlay);
-}); 
+const playAydio = (url) => {
+  if (!audio) audio = new Audio();
+  audio.src = url;
+  audio.load();
+  audio.play();
+};
 
-//add Start game button
-const startGameBtn = document.createElement('div');
-startGameBtn.className = 'start__game_btn';
-startGameBtn.innerText = 'START GAME';
-switchContainer.before(startGameBtn); 
+const addGameButtons = () => {
+  const startGameBtn = document.createElement('div');
+  startGameBtn.className = 'start__game_btn';
+  startGameBtn.innerText = 'START GAME';
+  switchContainer.before(startGameBtn);
 
-const repeatWordBtn = document.createElement('div');
-repeatWordBtn.className = 'repeat__word_btn';
-repeatWordBtn.innerText = 'REPEAT';
-switchContainer.before(repeatWordBtn);
+  const repeatWordBtn = document.createElement('div');
+  repeatWordBtn.className = 'repeat__word_btn';
+  repeatWordBtn.innerText = 'REPEAT';
+  switchContainer.before(repeatWordBtn);
+};
 
-//change Mode
-const changeMode = modePlay => {
+const changeMode = (modePlay) => {
   const navigationMenu = document.querySelector('.navigation__menu');
   const rotateCardBtn = document.querySelectorAll('.rotate__card');
   const cardHeaderEn = document.querySelectorAll('.card__header_en');
   const cardImg = document.querySelectorAll('.card__img');
   const cardContainer = document.querySelectorAll('.card__container');
   const startGameBtn = document.querySelector('.start__game_btn');
+  const markLine = document.querySelector('.mark__line_container');
+  changeStartButtons();
 
   if (modePlay) {
-    if(HASH !== 'mainpage' && HASH !== ""){
+    if (HASH !== 'mainpage' && HASH !== "") {
       startGameBtn.classList.add('game__mode');
     }
-
     navigationMenu.classList.add('game__mode');
-
     cardContainer.forEach(card => {
       card.classList.add('game__mode');
     });
@@ -254,12 +162,15 @@ const changeMode = modePlay => {
     cardImg.forEach(img => {
       img.style.height = "90%";
     });
+    createMarkLine();
+    markLine.classList.add('game__mode');
+
   } else {
     startGameBtn.classList.remove('game__mode');
     navigationMenu.classList.remove('game__mode');
-    
     cardContainer.forEach(card => {
       card.classList.remove('game__mode');
+      card.classList.remove('disable');
     });
     rotateCardBtn.forEach(button => {
       button.style.display = "flex";
@@ -270,17 +181,129 @@ const changeMode = modePlay => {
     cardImg.forEach(img => {
       img.style.height = "80%";
     });
+    markLine.remove();
   }
+};
+
+const changeStartButtons = () => {
+  const startGameBtn = document.querySelector('.start__game_btn');
+  const repeatWordBtn = document.querySelector('.repeat__word_btn');
+
+  if (isGameModePlay) {
+    startGameBtn.addEventListener('click', () => {
+      startGameBtn.classList.remove('game__mode');
+      repeatWordBtn.classList.add('game__mode');
+    })
+  } else {
+    repeatWordBtn.classList.remove('game__mode');
+  }
+};
+
+const createMarkLine = () => {
+  const markLine = document.createElement('div');
+  markLine.className = 'mark__line_container';
+  mainContainer.appendChild(markLine);
+}
+
+const addMarks = (isAnswerCorrect) => {
+  const markLine = document.querySelector('.mark__line_container');
+  const mark = document.createElement('div');
+
+  if (isAnswerCorrect) {
+    mark.className = 'fa fa-star checked';
+  } else {
+    mark.className = 'fa fa-star';
+  }
+  markLine.appendChild(mark);
+}
+
+const init = () => {
+  let hash = HASH;
+  const cards = {
+    data: DATA,
+    hash
+  };
+
+  craeteCards(cards.data);
+
+  const getRandomCards = (data, hash) => {
+    let cardsCategory = data.filter(item => item.category === hash);
+
+    let randomCardsArray = cardsCategory.sort(function(){
+      return Math.random() - 0.5;
+    });
+    
+    //check correct answer
+
+    let currentCard = randomCardsArray[countClick];
+    let currentWord = currentCard.word;
+    const cardDiscr = document.querySelectorAll('.card__discr');
+    cardDiscr.forEach(card => {
+      card.addEventListener('click', event => {
+        let cardElemText;
+
+        if (event.target.closest('.front__card') !== null) {
+          cardElemText = event.target.closest('.front__card').parentElement.firstElementChild.firstElementChild.nextElementSibling.innerHTML;
+        }
+        ;
+        checkCardCorrect(cardElemText, currentWord);
+      });
+    });
+
+    
+    const repeatWordBtn = document.querySelector('.repeat__word_btn');
+    repeatWordBtn.addEventListener('click', () => {
+      currentCard = randomCardsArray[countClick];
+      currentWord = currentCard.word;
+      playAydio(currentCard.audioSrc);
+    });
+
+    const checkCardCorrect = (text, word) => {
+      if (text === word) {
+        playAydio('assets/audio/correct.mp3');
+        countClick = countClick + 1;
+        currentCard = randomCardsArray[countClick];
+        currentWord = currentCard.word;
+        let correctCard = event.target.closest('.card__container');
+        correctCard.classList.add('disable');
+        setTimeout(playAydio, 1000, currentCard.audioSrc);
+        addMarks(true);
+      } else {
+        playAydio('assets/audio/wrong.mp3');
+        addMarks(false);
+      }
+
+      return countClick;
+    };
+
+    return randomCardsArray;
+  };
+
+  const startGameBtn = document.querySelector('.start__game_btn');
+  startGameBtn.addEventListener('click', () => {
+    countClick = 0;
+    
+    let randomCards = getRandomCards(cards.data, HASH);
+    let randomCard = randomCards[countClick];
+    playAydio(randomCard.audioSrc);
+  });
+
 }; 
 
-//add audio
-let audio;
-function playAydio(url) {
-  if(!audio) audio = new Audio(); 
-  audio.src = url;
-  audio.load();
-  audio.play();
-};
+switchInput.addEventListener('click', () => {
+  if (!isGameModePlay) {
+    gameModeTrain.classList.add('hide');
+    gameModePlay.classList.remove('hide');
+    isGameModePlay = true;
+  } else {
+    gameModeTrain.classList.remove('hide');
+    gameModePlay.classList.add('hide');
+    isGameModePlay = false;
+  }
+  changeMode(isGameModePlay);
+});
+
+addGameButtons();
 
 window.addEventListener('DOMContentLoaded', init);
 window.addEventListener('hashchange', () => {
@@ -288,9 +311,6 @@ window.addEventListener('hashchange', () => {
   getHash();
   init();
   changeMode(isGameModePlay);
-  const repeatWordBtn = document.querySelector ('.repeat__word_btn')
-  repeatWordBtn.classList.remove('game__mode');
 });
-
 
 
