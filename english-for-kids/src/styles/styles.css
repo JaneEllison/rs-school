@@ -3,6 +3,42 @@
   margin: 0;
   font-family: sans-serif;
 }
+.lock {
+  overflow: hidden;
+}
+.app__container {
+  position: relative;
+}
+.game__over {
+  position: absolute;
+  width: 100vw;
+  height: 150vh;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.win__card {
+  background: rgb(181, 255, 132);
+}
+.lose__card {
+  background: rgb(255, 161, 132);
+}
+.restart__button {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  width: 15%;
+  height: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
+}
 .header__container {
   height: 45px;
   max-width: 1000px;
@@ -15,6 +51,12 @@
 }
 .navigation {
   position: relative;
+}
+.navigation__link:hover{
+  box-shadow: 0 2px 0 rgb(69, 153, 0);
+}
+.navigation__link.current {
+  box-shadow: 0 2px 0 rgb(69, 153, 0);
 }
 .start__game_btn, .repeat__word_btn {
   display: none;

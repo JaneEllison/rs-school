@@ -341,56 +341,56 @@ const DATA = [
       translation: 'ухо',
       image: 'assets/img_humanbody/ear.png',
       audioSrc: 'assets/audio/ear.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'eye',
       translation: 'глаз',
       image: 'assets/img_humanbody/eye.png',
       audioSrc: 'assets/audio/eye.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'finger',
       translation: 'палец',
       image: 'assets/img_humanbody/finger.png',
       audioSrc: 'assets/audio/finger.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'foot',
       translation: 'стопа',
       image: 'assets/img_humanbody/foot.png',
       audioSrc: 'assets/audio/foot.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'hand',
       translation: 'рука',
       image: 'assets/img_humanbody/hand.png',
       audioSrc: 'assets/audio/hand.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'head',
       translation: 'голова',
       image: 'assets/img_humanbody/head.png',
       audioSrc: 'assets/audio/head.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'legs',
       translation: 'нога',
       image: 'assets/img_humanbody/legs.png',
       audioSrc: 'assets/audio/legs.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'nose',
       translation: 'нос',
       image: 'assets/img_humanbody/nose.png',
       audioSrc: 'assets/audio/nose.mp3',
-      category: 'Body'
+      category: 'Humanbody'
     },
     {
       word: 'bicycle',
