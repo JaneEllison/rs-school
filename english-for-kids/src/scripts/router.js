@@ -8,6 +8,7 @@ function Router(routes) {
     this.constructor(routes);
     this.init();
   } catch (e) {
+    alert('Something went wrong. Path not found. :(');
     console.error(e);   
   }
 }

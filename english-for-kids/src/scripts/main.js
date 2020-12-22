@@ -13,7 +13,7 @@ import Router from '@/scripts/router.js';
 }());
 
 const container = document.querySelector('.main__container');
-let HASH = window.location.hash.substr(1);
+let HASH;
 
 const getHash = () => {
   return HASH = window.location.hash.substr(1);
@@ -105,6 +105,7 @@ const getCards = (data, hash) => {
 };
 
 const craeteCards = cards => {
+  getHash();
   const cardsData = getCards(cards, HASH);
   return cardsData.map(item => buildCard(item));
 };

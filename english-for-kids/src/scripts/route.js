@@ -7,7 +7,8 @@ function Route(name, htmlName, defaultRoute) {
     }
     this.constructor(name, htmlName, defaultRoute);
   } catch (e) {
-    console.error(e);
+    alert ('Sorry. Page not found. :(');
+    console.error(e);   
   }
 }
 
