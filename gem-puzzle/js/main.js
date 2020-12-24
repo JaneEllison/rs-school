@@ -1,12 +1,4 @@
 'use strict';
-//создание элементов
-const wrapper = document.createElement ('div');
-const navigation = document.createElement ('div');
-const buttonRestart = document.createElement ('button');
-const buttonSound = document.createElement ('button');
-const info = document.createElement ('div');
-const soundElement = document.createElement ('div');
-
 const cellSize = 100;
 let field = document.createElement ('div');
 let numbers = [...Array(15).keys()];
@@ -17,40 +9,76 @@ let moveCountOn = false;
 let timeFinish = '';
 let soundOn = false;
 
-//добавление элементам классов
-wrapper.classList.add ('wrapper');
-navigation.classList.add ('navigation');
-buttonRestart.classList.add ('button', 'btn__restart');
-buttonSound.classList.add ('button', 'btn__sound', 'on');
-info.classList.add ('info');
-field.classList.add ('field');
-soundElement.classList.add ('play-sound');
-soundElement.classList.add ('hidden');
+//create elements
+const createElements = () => {
+  const wrapper = document.createElement ('div');
+  const navigation = document.createElement ('div');
+  const buttonRestart = document.createElement ('button');
+  const buttonSound = document.createElement ('button');
+  const info = document.createElement ('div');
+  const soundElement = document.createElement ('div');
+  
+  //add class for elements
+  wrapper.classList.add ('wrapper');
+  navigation.classList.add ('navigation');
+  buttonRestart.classList.add ('button', 'btn__restart');
+  buttonSound.classList.add ('button', 'btn__sound', 'on');
+  info.classList.add ('info');
+  field.classList.add ('field');
+  soundElement.classList.add ('play-sound');
+  soundElement.classList.add ('hidden');
+  
+  //add text in button
+  buttonRestart.innerText = 'Start';
+  buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
+  info.innerHTML = `
+  <span class="time">Time: 00:00:00</span>
+  <span class = 'moves'>Moves: ${moveCount}</span>`;
+  soundElement.innerHTML = `<audio class="audio" src="./assets/sound/move.mp3"></audio>`
+  
+  //add Childs
+  document.body.append(wrapper);
+  wrapper.append (navigation, info, field, soundElement);
+  navigation.append (buttonRestart, buttonSound);  
+};
 
-//добавление в кнопки текста
-buttonRestart.innerText = 'Start';
-buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
-info.innerHTML = `
-<span class="time">Time: 00:00:00</span>
-<span class = 'moves'>Moves: ${moveCount}</span>`;
-soundElement.innerHTML = `<audio class="audio" src="./assets/sound/move.mp3"></audio>`
+//init game
+const init = () => {
+  createElements();
+  createField();
 
-//добавление родительских эл-тов
-document.body.appendChild(wrapper);
-wrapper.appendChild (navigation);
-wrapper.appendChild (info);
-wrapper.appendChild (field);
-navigation.appendChild (buttonRestart);
-navigation.appendChild (buttonSound);
-wrapper.appendChild (soundElement);
+  const buttonSound = document.querySelector('.btn__sound');
+  const buttonRestart = document.querySelector('.btn__restart');
 
-//создание самого поля
+  buttonSound.addEventListener ('click', () => {
+  buttonSound.classList.toggle ('on');
+
+  if(buttonSound.classList.contains ('on')){
+    buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
+  } else {
+    buttonSound.innerHTML = `<i class="material-icons">music_off</i>`;;
+  }
+  });
+
+  buttonRestart.addEventListener('click', () => {
+  buttonRestart.innerText = 'Restart';
+  field.textContent = '';
+  moveCount = 0;
+  let moves = document.querySelector ('.moves')
+  moves.innerHTML = `Moves: ${moveCount}`;
+  startNewGame();
+  });
+}
+
+//create field
 function createField () {
-  //движение ячейки
+  //cell move
   function move(index) {
     const cell = cells[index];
     const leftDiff = Math.abs(empty.left - cell.left);
     const topDiff = Math.abs(empty.top - cell.top);
+    const buttonSound = document.querySelector('.btn__sound');
+  
 
     if (leftDiff + topDiff > 1) {
       return;
@@ -77,7 +105,7 @@ function createField () {
       setSound();
     }
 
-    //конец игры
+    //end og the game
     const isFunished = cells.every(cell => {
       return cell.value  === cell.top * 4 + cell.left;
     });
@@ -87,18 +115,17 @@ function createField () {
     }
   };
 
-  //пустая ячейка
+  //empty cell
   const empty = {
     value: 15,
     top: 3,
     left: 3
   };
 
-  //создание массива ячеек
+  //create calls array
   const cells = [];
 
   for (let i = 0; i < 15; i++) {
-    //значение ячейки
     const cell = document.createElement ('div');
     const value = numbers[i];
 
@@ -226,24 +253,5 @@ function setSound () {
     audio.play();
 };
 
-buttonSound.addEventListener ('click', () => {
-  buttonSound.classList.toggle ('on');
-
-  if(buttonSound.classList.contains ('on')){
-    buttonSound.innerHTML = `<i class="material-icons">music_note</i>`;;
-  } else {
-    buttonSound.innerHTML = `<i class="material-icons">music_off</i>`;;
-  }
-});
-
-buttonRestart.addEventListener('click', () => {
-  buttonRestart.innerText = 'Restart';
-  field.textContent = '';
-  moveCount = 0;
-  let moves = document.querySelector ('.moves')
-  moves.innerHTML = `Moves: ${moveCount}`;
-  startNewGame();
-});
-
-window.addEventListener('DOMContentLoaded', createField);
+window.addEventListener('DOMContentLoaded', init);
 
