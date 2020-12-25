@@ -22,6 +22,7 @@ const tablePer100 = document.querySelector('.table__per100');
 const arrowRightCount = document.querySelector('.arrow__right_count');
 
 const totalBtn = document.querySelector('.total__btn');
+const mapid = document.getElementById('mapid');
 
 let countryCasesData;
 let allCasesData;
@@ -71,7 +72,7 @@ const getInfoTable = async () => {
     recovered = Math.round(allCasesData.Global.NewRecovered / worldPopulationPer100);
   }
 
-  createCountryTable('World', 'assets/images/world-icon.png', confirmed, death, recovered);
+  createCountryTable('World', '../assets/images/world-icon.png', confirmed, death, recovered);
 };
 
 const getCurrentCountry = () => {
@@ -116,7 +117,7 @@ const getCountryInfo = async () => {
 }
 
 const createCountryTable = (country, flag, confirmed, death, recovered) => {
-  countryFlag.innerHTML = `<img src="../${flag}" class="flag__img">`;
+  countryFlag.innerHTML = `<img src="${flag}" class="flag__img">`;
   countryName.innerText = country;
 
   tableConfirmed.innerText = confirmed;
@@ -198,21 +199,39 @@ arrowLeftCount.addEventListener('click', () => {
   getCountryInfo();
 });
 
-//choose country for table
 countries.addEventListener ('click', (event) => {
-  cleanTable();
+  const countryNameChart = document.querySelector('.chart__country_name');
   let target = event.target;
 
-  if (target.className !== 'country__name') {
-    currentCountry = currentCountry;
-  } else {
-    currentCountry = target.innerText;
+  if (target.className !== 'country__name' || target.innerText === currentCountry) {
+    return;
+  } 
+  
+  currentCountry = target.innerText;  
+  countryNameChart.innerText = currentCountry;
+  isCountryMode = true;
+
+  cleanTable();
+  getCurrentCountry(); 
+  getCountryInfo();
+
+});
+
+mapid.addEventListener('click', (event)=> {
+  const countryNameChart = document.querySelector('.chart__country_name');
+  let target = event.target;
+
+  if(target.className !== 'covid__country') {
+    return currentCountry = currentCountry;
   }
+  
+  currentCountry = target.innerText.slice(0, -1);
+  countryNameChart.innerText = currentCountry;
   isCountryMode = true;
 
   getCurrentCountry(); 
   getCountryInfo();
-});
+})
 
 //return to total cases
 totalBtn.addEventListener ('click', () => {
